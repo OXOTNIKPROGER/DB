@@ -1,15 +1,17 @@
-import psycopg2
-from storages.author import Author
-conn = psycopg2.connect(dbname='lab', user='postgres',
-                        password='Scorpions', host='localhost')
-cursor = conn.cursor()
-cursor.execute('SELECT * FROM author')
-records = cursor.fetchall()
-cursor.close()
-conn.close()
-x = Author(records[0][0] , records[0][1] , records[0][2] , records[0][3] , records[0][4])
+import datetime
 
-print(x.id , x.year_of_death)
+from model.AuthorModel import AuthorModel
+from model.BookModel import BookModel
+from storages.book import Book
+from storages.author import Author
+
+x = BookModel('lab' , 'postgres' , 'Scorpions' , 'localhost')
+au = Book(0 , 'title' , datetime.date(1999 ,1 , 10), "house")
+#x.add_entity(au)
+#a = x.get_entities()
+for x in a:
+    print(x.id , x.title, x.publishing_house)
+#print(x.id , x.year_of_death)
 def print_hi(name):
 
     print(f'Hi, {name}')
