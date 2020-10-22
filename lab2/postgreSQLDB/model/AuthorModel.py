@@ -39,8 +39,27 @@ class AuthorModel(DBModel):
             return authors
 
     def update_entity(self , update_entity):
-
-        pass
+        request = 'UPDATE author SET name = %s , date_of_first_publication = %s , year_of_birth = %s , year_of_death = %s WHERE id = %s'
+        data = (update_entity.name , update_entity.date_of_first_publication , update_entity.year_of_birth , update_entity.year_of_death , update_entity.id)
+        try:
+            self.cursor.execute(request , data)
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
 
     def delete_entity(self , id):
-        pass
+        records = self.get_entities()
+        temp = False
+        for record in records:
+            if(id == record.id):
+                temp = True
+
+        if(temp == False):
+            print("No author on this id")
+            return
+        request = 'DELETE FROM author WHERE id = %s'
+        try:
+            self.cursor.execute(request , (id ,))
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)

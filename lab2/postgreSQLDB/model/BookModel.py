@@ -39,7 +39,27 @@ class BookModel(DBModel):
             return books
 
     def update_entity(self, update_entity):
-        pass
+        request = 'UPDATE book SET title = %s , print_date = %s , publishing_house = %s WHERE id = %s'
+        data = (update_entity.title, update_entity.print_date, update_entity.publishing_house, update_entity.id)
+        try:
+            self.cursor.execute(request, data)
+            self.conn.commit()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
 
     def delete_entity(self, id):
-        pass
+        records = self.get_entities()
+        temp = False
+        for record in records:
+            if (id == record.id):
+                temp = True
+
+        if (temp == False):
+            print("No book on this id")
+            return
+        request = 'DELETE FROM book WHERE id = %s'
+        try:
+            self.cursor.execute(request, (id,))
+            self.conn.commit()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
