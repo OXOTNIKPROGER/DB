@@ -63,3 +63,15 @@ class BookModel(DBModel):
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
+
+    def get_entity(self, entity_id):
+        request = 'SELECT 1 FROM book WHERE id = %s'
+        book = None
+        try:
+            self.cursor.execute(request, entity_id)
+            record = self.cursor.fetchall()
+            book = Book(record[0], record[1], record[2], record[3])
+            self.conn.commit()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        return book

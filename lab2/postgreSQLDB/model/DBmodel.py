@@ -23,6 +23,10 @@ class DBModel(ABC):
         pass
 
     @abstractmethod
+    def get_entity(self , entity_id):
+        pass
+
+    @abstractmethod
     def get_entities(self):
         pass
 

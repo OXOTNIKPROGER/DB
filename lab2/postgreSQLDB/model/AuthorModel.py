@@ -1,6 +1,7 @@
 from model.DBmodel import DBModel
 from storages.author import Author
 import psycopg2
+import time
 
 class AuthorModel(DBModel):
     def __init__(self , dbname , user , password , host ):
@@ -63,3 +64,15 @@ class AuthorModel(DBModel):
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
             print(error)
+
+    def get_entity(self, entity_id):
+        request = 'SELECT 1 FROM author WHERE id = %s'
+        author = None
+        try:
+            self.cursor.execute(request , entity_id)
+            record = self.cursor.fetchall()
+            author = Author(record[0] , record[1] , record[2] ,record[3] , record[4])
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return author
