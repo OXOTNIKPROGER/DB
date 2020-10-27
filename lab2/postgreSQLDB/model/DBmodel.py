@@ -37,3 +37,15 @@ class DBModel(ABC):
     @abstractmethod
     def delete_entity(self , id):
         pass
+
+    @abstractmethod
+    def set_links(self , first_entity_id , second_entity_id):
+        pass
+
+    @abstractmethod
+    def delete_links(self , entity_id):
+        pass
+
+    @abstractmethod
+    def generate(self , number):
+        pass

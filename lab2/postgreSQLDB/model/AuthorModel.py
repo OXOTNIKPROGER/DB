@@ -14,6 +14,7 @@ class AuthorModel(DBModel):
     def __del__(self):
         try:
             self.cursor.close()
+            self.conn.close()
         except (Exception , psycopg2.DatabaseError) as error:
             print(error)
 
@@ -32,8 +33,9 @@ class AuthorModel(DBModel):
         try:
             self.cursor.execute(request)
             records = self.cursor.fetchall()
-            for record in records:
-                authors.append(Author(record[0] , record[1] , record[2] , record[3] , record[4]))
+            if (records != None):
+                for record in records:
+                    authors.append(Author(record[0] , record[1] , record[2] , record[3] , record[4]))
         except (Exception , psycopg2.DatabaseError) as error:
             print(error)
         finally:
@@ -60,19 +62,45 @@ class AuthorModel(DBModel):
             return
         request = 'DELETE FROM author WHERE id = %s'
         try:
+            self.delete_links(id)
             self.cursor.execute(request , (id ,))
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
             print(error)
 
     def get_entity(self, entity_id):
-        request = 'SELECT 1 FROM author WHERE id = %s'
+        request = 'SELECT * FROM author WHERE id = %s'
         author = None
         try:
-            self.cursor.execute(request , entity_id)
+            self.cursor.execute(request , (entity_id,))
             record = self.cursor.fetchall()
             author = Author(record[0] , record[1] , record[2] ,record[3] , record[4])
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
             print(error)
         return author
+
+    def set_links(self , first_entity_id , second_entity_id):
+        request = 'SELECT * FROM book WHERE id = %s'
+        try:
+            self.cursor.execute(request , (second_entity_id,))
+            book = None
+            book = self.cursor.fetchall()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+            return
+        request = 'INSERT INTO books_authors(book_id , author_id) VALUES (%s,%s)'
+        data = (second_entity_id , first_entity_id)
+        try:
+            self.cursor.execute(request , data)
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+
+    def delete_links(self , entity_id):
+        request = 'DELETE FROM books_authors WHERE author_id = %s'
+        try:
+            self.cursor.execute(request , (entity_id, ))
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)

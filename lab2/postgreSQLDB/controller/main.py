@@ -1,5 +1,7 @@
 from view.view import View
 from model.AuthorModel import AuthorModel
+from  model.UserModel import UserModel
+from storages.user import User
 
 in_menu = True
 in_author_menu = True
@@ -7,6 +9,12 @@ in_book_menu = True
 in_subscription_menu = True
 in_user_menu = True
 authorModel = AuthorModel('lab' , 'postgres' , 'Scorpions' , 'localhost')
+userModel = UserModel('lab' , 'postgres' , 'Scorpions' , 'localhost')
+user = User(4 , 'name1' , 0.1 , True)
+records = userModel.get_entity(1)
+#records = userModel.update_entity(user)
+#for record in records:
+   # print(record.name , record.honor)
 
 while in_menu:
     print("Select table:\n1)Author\n2)Book\n3)Subscription\n4)User\n5)Exit\nInput number:")
