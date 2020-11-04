@@ -1,6 +1,7 @@
 from model.DBmodel import DBModel
 from storages.user import User
 import psycopg2
+import time
 
 class UserModel(DBModel):
     def __init__(self, dbname, user, password, host):
@@ -18,7 +19,7 @@ class UserModel(DBModel):
             print(error)
 
     def get_entities(self):
-        request = 'SELECT * FROM "user" AS u LEFT JOIN subscription AS s ON(s.user_id = u.id)'
+        request = 'SELECT * FROM "user"'
         users = list()
         try:
             self.cursor.execute(request)
@@ -37,8 +38,7 @@ class UserModel(DBModel):
         user = None
         try:
             self.cursor.execute(request, data)
-            record = self.cursor.fetchall()
-            print(record)
+            record = self.cursor.fetchone()
             user = User(record[0] , record[1] , record[2] , record[3])
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
@@ -107,9 +107,78 @@ class UserModel(DBModel):
         if (temp == False):
             print("No user on this id")
             return
-        request = 'DELETE FROM books_users WHERE users_id = %s'
+        request = 'DELETE FROM books_users WHERE user_id = %s'
         try:
             self.cursor.execute(request, (entity_id,))
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
+
+    def __get_generate_datas(self , request , data):
+        try:
+            self.cursor.execute(request, data)
+            datas = self.cursor.fetchall()
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return datas
+
+    def generate(self, number):
+        request = 'INSERT INTO "user"(name , honor , blacklist) SELECT MD5(random()::text), random(), (random()::int)::boolean FROM generate_series(1 , %s)'
+        data = (number , )
+        try:
+            self.cursor.execute(request , data)
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+
+    def filter_from_id(self , min , max):
+        request = 'SELECT * FROM "user" WHERE "user".id >= %s AND "user".id <= %s ORDER BY(SELECT COUNT(*) FROM "subscription" WHERE "subscription".user_id = "user".id)'
+        data = (min , max)
+        Users = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request , data)
+            users = self.cursor.fetchall()
+            finish = time.time()
+            print("///Execution time: ")
+            print(finish - start)
+            for item in users:
+                Users.append(User(item[0] , item[1] , item[2] , item[3]))
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return Users
+
+    def filter_from_desc(self):
+        request = 'SELECT * FROM "user" ORDER BY(SELECT COUNT(*) FROM "subscription" WHERE "subscription".user_id = "user".id), "user".name DESC'
+        data = ()
+        Users = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request , data)
+            users = self.cursor.fetchall()
+            finish = time.time()
+            print("///Execution time: ")
+            print(finish - start)
+            for item in users:
+                Users.append(User(item[0] , item[1] , item[2] , item[3]))
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return Users
+
+    def filter_from_blacklist(self):
+        request = 'SELECT * FROM "user" WHERE "user".blacklist = false ORDER BY(SELECT COUNT(*) FROM "subscription" WHERE "subscription".user_id = "user".id)'
+        data = ()
+        Users = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request, data)
+            users = self.cursor.fetchall()
+            finish = time.time()
+            print("///Execution time: ")
+            print(finish - start)
+            for item in users:
+                Users.append(User(item[0], item[1], item[2], item[3]))
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(error)
+        return Users

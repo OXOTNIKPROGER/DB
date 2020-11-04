@@ -73,9 +73,8 @@ class AuthorModel(DBModel):
         author = None
         try:
             self.cursor.execute(request , (entity_id,))
-            record = self.cursor.fetchall()
+            record = self.cursor.fetchone()
             author = Author(record[0] , record[1] , record[2] ,record[3] , record[4])
-            self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
             print(error)
         return author
@@ -104,3 +103,56 @@ class AuthorModel(DBModel):
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
             print(error)
+
+    def __get_generate_datas(self , request , data):
+        try:
+            self.cursor.execute(request, data)
+            datas = self.cursor.fetchall()
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return datas
+
+    def generate(self, number):
+        request = 'INSERT INTO "author"(name , date_of_first_publication , year_of_birth , year_of_death) SELECT MD5(random()::text), timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - timestamp \'1-1-1\') , trunc(random()*%s)::int , trunc(random()*%s)::int FROM generate_series(1 , %s)'
+        data = (number , number , number)
+        try:
+            self.cursor.execute(request , data)
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+
+    def find_alive_author_filter_books(self):
+        request = 'SELECT * FROM "author" WHERE year_of_death = 0 ORDER BY(SELECT COUNT(*) FROM "books_authors" WHERE "books_authors".author_id = "author".id) ASC'
+        data = ()
+        authors = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request , data)
+            temp = self.cursor.fetchall()
+            finish = time.time()
+            print("///Execution time:")
+            print(finish - start)
+            for item in temp:
+                authors.append(Author(item[0] , item[1] , item[2] , item[3] , item[4]))
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return authors
+
+    def find_author_filter_date_pub(self , min , max):
+        request = 'SELECT "author".id , "author".name , "author".date_of_first_publication , "author".year_of_birth , "author".year_of_death , "book".title FROM "author" JOIN "books_authors" ON "books_authors".author_id = "author".id JOIN "book" ON "books_authors".book_id = "book".id WHERE "book".print_date >= %s AND "book".print_date <= %s ORDER BY id ASC'
+        data = (min , max)
+        authors = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request , data)
+            temp = self.cursor.fetchall()
+            finish = time.time()
+            print("///Execution time:")
+            print(finish - start)
+            for item in temp:
+                author = (item[0] , item[1] , item[2] , item[3] , item[4] , item[5])
+                authors.append(author)
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return authors

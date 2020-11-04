@@ -1,6 +1,7 @@
 from model.DBmodel import DBModel
 from storages.book import Book
 import psycopg2
+import time
 
 class BookModel(DBModel):
     def __init__(self , dbname , user , password , host ):
@@ -72,7 +73,7 @@ class BookModel(DBModel):
         book = None
         try:
             self.cursor.execute(request, (entity_id,))
-            record = self.cursor.fetchall()
+            record = self.cursor.fetchone()
             book = Book(record[0], record[1], record[2], record[3])
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
@@ -112,3 +113,38 @@ class BookModel(DBModel):
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
+
+    def __get_generate_datas(self , request , data):
+        try:
+            self.cursor.execute(request, data)
+            datas = self.cursor.fetchall()
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return datas
+
+    def generate(self, number):
+        request = 'INSERT INTO "book"(title , print_date , publishing_house) SELECT MD5(random()::text), timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - timestamp \'1-1-1\') , MD5(random()::text) FROM generate_series(1 , %s)'
+        data = (number , )
+        try:
+            self.cursor.execute(request , data)
+            self.conn.commit()
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+    def find_book_user(self):
+        request = 'SELECT b.title , "user".name FROM "book" b JOIN "books_users" ON b.id = "books_users".book_id JOIN "user" ON "user".id = "books_users".user_id ORDER BY title DESC, name ASC'
+        data = ()
+        connections = list()
+        try:
+            start = time.time()
+            self.cursor.execute(request , data)
+            temp = self.cursor.fetchall()
+            finish = time.time()
+            print("///Execution time: ")
+            print(finish - start)
+            for item in temp:
+                conne = (item[0] , item[1])
+                connections.append(conne)
+        except (Exception , psycopg2.DatabaseError) as error:
+            print(error)
+        return connections
