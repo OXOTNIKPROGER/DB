@@ -9,6 +9,7 @@ class AuthorModel(DBModel):
         try:
             self.cursor = self.conn.cursor()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def __del__(self):
@@ -16,6 +17,7 @@ class AuthorModel(DBModel):
             self.cursor.close()
             self.conn.close()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def add_entity(self , new_entity):
@@ -25,6 +27,7 @@ class AuthorModel(DBModel):
            self.cursor.execute(request, data)
            self.conn.commit()
        except(Exception,psycopg2.DatabaseError) as error:
+           self.cursor.execute('ROLLBACK')
            print(error)
 
     def get_entities(self):
@@ -37,6 +40,7 @@ class AuthorModel(DBModel):
                 for record in records:
                     authors.append(Author(record[0] , record[1] , record[2] , record[3] , record[4]))
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         finally:
             return authors
@@ -48,6 +52,7 @@ class AuthorModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def delete_entity(self , id):
@@ -66,6 +71,7 @@ class AuthorModel(DBModel):
             self.cursor.execute(request , (id ,))
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def get_entity(self, entity_id):
@@ -76,6 +82,7 @@ class AuthorModel(DBModel):
             record = self.cursor.fetchone()
             author = Author(record[0] , record[1] , record[2] ,record[3] , record[4])
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return author
 
@@ -86,6 +93,7 @@ class AuthorModel(DBModel):
             book = None
             book = self.cursor.fetchall()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
             return
         request = 'INSERT INTO books_authors(book_id , author_id) VALUES (%s,%s)'
@@ -94,6 +102,7 @@ class AuthorModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def delete_links(self , entity_id):
@@ -102,6 +111,7 @@ class AuthorModel(DBModel):
             self.cursor.execute(request , (entity_id, ))
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def __get_generate_datas(self , request , data):
@@ -110,6 +120,7 @@ class AuthorModel(DBModel):
             datas = self.cursor.fetchall()
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return datas
 
@@ -120,6 +131,7 @@ class AuthorModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def find_alive_author_filter_books(self):
@@ -136,6 +148,7 @@ class AuthorModel(DBModel):
             for item in temp:
                 authors.append(Author(item[0] , item[1] , item[2] , item[3] , item[4]))
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return authors
 
@@ -154,5 +167,6 @@ class AuthorModel(DBModel):
                 author = (item[0] , item[1] , item[2] , item[3] , item[4] , item[5])
                 authors.append(author)
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return authors

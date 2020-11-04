@@ -9,6 +9,7 @@ class BookModel(DBModel):
         try:
             self.cursor = self.conn.cursor()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def __del__(self):
@@ -16,6 +17,7 @@ class BookModel(DBModel):
             self.cursor.close()
             self.conn.close()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def add_entity(self , new_entity):
@@ -25,7 +27,8 @@ class BookModel(DBModel):
            self.cursor.execute(request, data)
            self.conn.commit()
        except(Exception,psycopg2.DatabaseError) as error:
-           print(error)
+            self.cursor.execute('ROLLBACK')
+            print(error)
 
     def get_entities(self):
         request = 'SELECT * FROM book'
@@ -37,6 +40,7 @@ class BookModel(DBModel):
                 for record in records:
                     books.append(Book(record[0] , record[1] , record[2] , record[3]))
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         finally:
             return books
@@ -48,6 +52,7 @@ class BookModel(DBModel):
             self.cursor.execute(request, data)
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def delete_entity(self, id):
@@ -66,6 +71,7 @@ class BookModel(DBModel):
             self.cursor.execute(request, (id,))
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def get_entity(self, entity_id):
@@ -77,6 +83,7 @@ class BookModel(DBModel):
             book = Book(record[0], record[1], record[2], record[3])
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return book
 
@@ -86,6 +93,7 @@ class BookModel(DBModel):
             self.cursor.execute(request, (second_entity_id,))
             author = self.cursor.fetchall()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         if (self.get_entity(first_entity_id) == None or author == None):
             print('No entities on this ids')
@@ -96,6 +104,7 @@ class BookModel(DBModel):
             self.cursor.execute(request, data)
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def delete_links(self, entity_id):
@@ -112,6 +121,7 @@ class BookModel(DBModel):
             self.cursor.execute(request, (entity_id,))
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def __get_generate_datas(self , request , data):
@@ -120,6 +130,7 @@ class BookModel(DBModel):
             datas = self.cursor.fetchall()
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return datas
 
@@ -130,6 +141,7 @@ class BookModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
     def find_book_user(self):
         request = 'SELECT b.title , "user".name FROM "book" b JOIN "books_users" ON b.id = "books_users".book_id JOIN "user" ON "user".id = "books_users".user_id ORDER BY title DESC, name ASC'
@@ -146,5 +158,6 @@ class BookModel(DBModel):
                 conne = (item[0] , item[1])
                 connections.append(conne)
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return connections

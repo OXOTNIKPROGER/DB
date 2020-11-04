@@ -240,7 +240,13 @@ while(in_menu):
                 for item in users:
                     View.show_user(item)
             elif(temp == '2'):
-                users = userModel.filter_from_desc()
+                while True:
+                    limit = View.get_limit()
+                    if(limit == -1):
+                        continue
+                    else:
+                        break
+                users = userModel.filter_from_desc(limit)
                 for item in users:
                     View.show_user(item)
             elif(temp == '3'):
@@ -347,3 +353,8 @@ while(in_menu):
     else:
         in_menu = False
         continue
+
+userModel.__del__()
+bookModel.__del__()
+authorModel.__del__()
+subscriptionModel.__del__()

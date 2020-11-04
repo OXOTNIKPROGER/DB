@@ -9,6 +9,7 @@ class UserModel(DBModel):
         try:
             self.cursor = self.conn.cursor()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def __del__(self):
@@ -16,6 +17,7 @@ class UserModel(DBModel):
             self.cursor.close()
             self.conn.close()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def get_entities(self):
@@ -28,6 +30,7 @@ class UserModel(DBModel):
                 for record in records:
                     users.append(User(record[0] , record[1] , record[2] , record[3]))
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         finally:
             return users
@@ -41,6 +44,7 @@ class UserModel(DBModel):
             record = self.cursor.fetchone()
             user = User(record[0] , record[1] , record[2] , record[3])
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return user
 
@@ -51,6 +55,7 @@ class UserModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def update_entity(self , update_entity):
@@ -60,6 +65,7 @@ class UserModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def delete_entity(self , id):
@@ -78,6 +84,7 @@ class UserModel(DBModel):
             self.cursor.execute(request, (id,))
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def set_links(self , first_entity_id , second_entity_id):
@@ -86,6 +93,7 @@ class UserModel(DBModel):
             self.cursor.execute(request, (second_entity_id,))
             book = self.cursor.fetchall()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         if (self.get_entity(first_entity_id) == None or book == None):
             print('No entities on this ids')
@@ -96,6 +104,7 @@ class UserModel(DBModel):
             self.cursor.execute(request, data)
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def delete_links(self , entity_id):
@@ -112,6 +121,7 @@ class UserModel(DBModel):
             self.cursor.execute(request, (entity_id,))
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def __get_generate_datas(self , request , data):
@@ -120,6 +130,7 @@ class UserModel(DBModel):
             datas = self.cursor.fetchall()
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return datas
 
@@ -130,6 +141,7 @@ class UserModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def filter_from_id(self , min , max):
@@ -146,12 +158,13 @@ class UserModel(DBModel):
             for item in users:
                 Users.append(User(item[0] , item[1] , item[2] , item[3]))
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return Users
 
-    def filter_from_desc(self):
-        request = 'SELECT * FROM "user" ORDER BY(SELECT COUNT(*) FROM "subscription" WHERE "subscription".user_id = "user".id), "user".name DESC'
-        data = ()
+    def filter_from_desc(self , limit):
+        request = 'SELECT * FROM "user" ORDER BY(SELECT COUNT("subscription".id) FROM "subscription" WHERE "subscription".user_id = "user".id), "user".name DESC LIMIT %s'
+        data = (limit , )
         Users = list()
         try:
             start = time.time()
@@ -163,11 +176,12 @@ class UserModel(DBModel):
             for item in users:
                 Users.append(User(item[0] , item[1] , item[2] , item[3]))
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return Users
 
     def filter_from_blacklist(self):
-        request = 'SELECT * FROM "user" WHERE "user".blacklist = false ORDER BY(SELECT COUNT(*) FROM "subscription" WHERE "subscription".user_id = "user".id)'
+        request = 'SELECT * FROM "user" WHERE "user".blacklist = false ORDER BY(SELECT COUNT(id) FROM "subscription" WHERE "subscription".user_id = "user".id)'
         data = ()
         Users = list()
         try:
@@ -180,5 +194,6 @@ class UserModel(DBModel):
             for item in users:
                 Users.append(User(item[0], item[1], item[2], item[3]))
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return Users

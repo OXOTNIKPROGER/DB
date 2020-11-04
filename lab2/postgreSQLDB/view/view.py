@@ -373,6 +373,14 @@ class View:
             return -1
 
     @staticmethod
+    def get_limit():
+        limit = input("Input limit")
+        if(limit.isdigit() == True):
+            return int(limit)
+        else:
+            return -1
+
+    @staticmethod
     def formated_author(item):
         print('{} id-> {}'.format('Author', item[0]))
         print('{} name-> {}'.format('Author', item[1]))

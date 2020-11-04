@@ -8,6 +8,7 @@ class SubscriptionModel(DBModel):
         try:
             self.cursor = self.conn.cursor()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def __del__(self):
@@ -15,6 +16,7 @@ class SubscriptionModel(DBModel):
             self.cursor.close()
             self.conn.close()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def check_user(self, id):
@@ -24,6 +26,7 @@ class SubscriptionModel(DBModel):
             self.cursor.execute(request , data)
             temp = self.cursor.fetchall()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         if(temp == []):
             print("No user on this id")
@@ -40,6 +43,7 @@ class SubscriptionModel(DBModel):
             self.cursor.execute(request, data)
             self.conn.commit()
         except(Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def get_entity(self, entity_id):
@@ -51,6 +55,7 @@ class SubscriptionModel(DBModel):
             record = self.cursor.fetchone()
             subscription = Subscription(record[0], record[1], record[2], record[3] , record[4] , record[5])
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return subscription
 
@@ -65,6 +70,7 @@ class SubscriptionModel(DBModel):
                     subscriptions.append(Subscription(record[0], record[1], record[2], record[3] , record[4] , record[5]))
         except (Exception, psycopg2.DatabaseError) as error:
             print(error)
+            self.cursor.execute('ROLLBACK')
         finally:
             return subscriptions
 
@@ -78,6 +84,7 @@ class SubscriptionModel(DBModel):
             self.cursor.execute(request, data)
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
 
@@ -96,6 +103,7 @@ class SubscriptionModel(DBModel):
             self.cursor.execute(request, (id,))
             self.conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
 
     def set_links(self, first_entity_id, second_entity_id):
@@ -110,6 +118,7 @@ class SubscriptionModel(DBModel):
             datas = self.cursor.fetchall()
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
         return datas
 
@@ -120,4 +129,5 @@ class SubscriptionModel(DBModel):
             self.cursor.execute(request , data)
             self.conn.commit()
         except (Exception , psycopg2.DatabaseError) as error:
+            self.cursor.execute('ROLLBACK')
             print(error)
