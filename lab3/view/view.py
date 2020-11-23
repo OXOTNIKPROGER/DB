@@ -1,8 +1,8 @@
 import datetime
-from storages.author import Author
-from storages.book import Book
-from storages.user import User
-from storages.subscription import Subscription
+from storages.tables import Author
+from storages.tables import Book
+from storages.tables import User
+from storages.tables import Subscription
 
 class View:
 
@@ -66,7 +66,7 @@ class View:
                 try:
                     honor = float(honor)
                     if (honor >= 0 and honor <= 1):
-                        break
+                        update_user.honor = honor
                     else:
                         print("Incorrect format")
                         continue
@@ -83,7 +83,8 @@ class View:
                     continue
             elif (info == '4'):
                 print("Quit done")
-                return update_user
+                break;
+        return update_user
 
     @staticmethod
     def find_subsciption():
@@ -246,13 +247,15 @@ class View:
                 continue
         while True:
             blacklist = input("Input blaclist(True/False):\n")
-            if (blacklist == "True" or blacklist == "False"):
-                blacklist = bool(blacklist)
+            if (blacklist == "True"):
+                blacklist = True
+            if (blacklist == "False"):
+                blacklist = False
                 break
             else:
                 print("Incorrect format")
                 continue
-        new_user = User(0, name, honor, blacklist)
+        new_user = User(name, honor, blacklist)
         return new_user
 
     @staticmethod
@@ -292,7 +295,7 @@ class View:
                 continue
             else:
                 break
-        new_subscription = Subscription(0 , number , price , date , number_of_books, user_id )
+        new_subscription = Subscription(number , price , date , number_of_books, user_id )
         return new_subscription
 
     @staticmethod
@@ -319,7 +322,7 @@ class View:
                 continue
             else:
                 break
-        new_author = Author(0 , name , date , year_of_birth , year_of_death)
+        new_author = Author(name , date , year_of_birth , year_of_death)
         return new_author
 
     @staticmethod
