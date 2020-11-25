@@ -1,6 +1,7 @@
 from model.DBmodel import DBModel
 from storages.tables import User
 from storages.tables import Books_users
+from storages.tables import Subscription
 import psycopg2
 import time
 from sqlalchemy import exc
@@ -8,24 +9,11 @@ from sqlalchemy import exc
 class UserModel(DBModel):
     def __init__(self, dbname, user, password, host):
         super(UserModel, self).__init__(dbname, user, password, host)
-        try:
-            self.cursor = self.conn.cursor()
-        except (Exception, psycopg2.DatabaseError , exc.DatabaseError) as error:
-            self.cursor.execute('ROLLBACK')
-            print(error)
-
-    def __del__(self):
-        try:
-            self.cursor.close()
-            self.conn.close()
-        except (Exception, psycopg2.DatabaseError ,exc.DatabaseError) as error:
-            self.cursor.execute('ROLLBACK')
-            print(error)
 
     def get_entities(self):
         try:
             users = self.session.query(User)
-        except(Exception , exc.DatabaseError) as error:
+        except(Exception , exc.DatabaseError , exc.InvalidRequestError)as error:
             print(error)
             self.session.execute("ROLLBACK")
         return users
@@ -34,7 +22,7 @@ class UserModel(DBModel):
         try:
             user = self.session.query(User).get(entity_id)
             self.session.commit()
-        except(Exception , exc.DatabaseError) as error:
+        except(Exception , exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
         return user
@@ -42,9 +30,10 @@ class UserModel(DBModel):
     def delete_entity(self , id):
         try:
             self.delete_links(id)
+            self.session.query(Subscription).filter_by(user_id = id).delete()
             self.session.query(User).filter_by(id = id).delete()
             self.session.commit()
-        except(Exception , exc.DatabaseError) as error:
+        except(Exception , exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
 
@@ -53,7 +42,7 @@ class UserModel(DBModel):
             new_entity = Books_users(second_entity_id , first_entity_id)
             self.session.add(new_entity)
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             self.session.execute('ROLLBACK')
             print(error)
 
@@ -61,7 +50,7 @@ class UserModel(DBModel):
         try:
             self.session.query(Books_users).filter_by(user_id=entity_id).delete()
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
 

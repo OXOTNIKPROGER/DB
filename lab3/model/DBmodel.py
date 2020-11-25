@@ -14,17 +14,18 @@ class DBModel(ABC):
             self.conn = psycopg2.connect(dbname = self._dbname , user = self._user , password = self._password , host = self._host)
             self.engine = create_engine("postgres+psycopg2://{}:{}@{}/{}".format(self._user , self._password , self._host , self._dbname))
             self.session = Session(bind=self.engine)
-        except (Exception , psycopg2.DatabaseError , exc.DatabaseError) as error:
+            self.cursor = self.conn.cursor()
+        except (Exception , psycopg2.DatabaseError , exc.DatabaseError , exc.InvalidRequestError) as error:
             self.session.execute("ROLLBACK")
             self.cursor.execute('ROLLBACK')
             print(error)
 
     def __del__(self):
         try:
+            self.cursor.close()
             self.conn.close()
             self.session.close()
-            self
-        except (Exception , psycopg2.DatabaseError) as error:
+        except (Exception , psycopg2.DatabaseError , exc.InvalidRequestError) as error:
             self.session.execute("ROLLBACK")
             self.cursor.execute('ROLLBACK')
             print(error)
@@ -33,7 +34,7 @@ class DBModel(ABC):
         try:
             self.session.add(new_entity)
             self.session.commit()
-        except (Exception, exc.DatabaseError) as error:
+        except (Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             self.session.execute('ROLLBACK')
             print(error)
 
@@ -49,7 +50,7 @@ class DBModel(ABC):
         try:
             self.session.add(update_entity)
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
 

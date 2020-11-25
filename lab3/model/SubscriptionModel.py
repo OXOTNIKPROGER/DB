@@ -6,39 +6,12 @@ from sqlalchemy import exc
 class SubscriptionModel(DBModel):
     def __init__(self, dbname, user, password, host):
         super(SubscriptionModel, self).__init__(dbname, user, password, host)
-        try:
-            self.cursor = self.conn.cursor()
-        except (Exception, psycopg2.DatabaseError) as error:
-            self.cursor.execute('ROLLBACK')
-            print(error)
-
-    def __del__(self):
-        try:
-            self.cursor.close()
-            self.conn.close()
-        except (Exception, psycopg2.DatabaseError) as error:
-            self.cursor.execute('ROLLBACK')
-            print(error)
-
-    def check_user(self, id):
-        try:
-            request = 'SELECT * FROM "user" WHERE id = %s'
-            data = (id , )
-            self.cursor.execute(request , data)
-            temp = self.cursor.fetchall()
-        except (Exception , psycopg2.DatabaseError) as error:
-            self.cursor.execute('ROLLBACK')
-            print(error)
-        if(temp == []):
-            print("No user on this id")
-            return False
-        return True
 
     def get_entity(self, entity_id):
         try:
             subsc = self.session.query(Subscription).get(entity_id)
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
         return subsc
@@ -46,7 +19,7 @@ class SubscriptionModel(DBModel):
     def get_entities(self):
         try:
             subscs = self.session.query(Subscription)
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
         return subscs
@@ -55,7 +28,7 @@ class SubscriptionModel(DBModel):
         try:
             self.session.query(Subscription).filter_by(id = id).delete()
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
 

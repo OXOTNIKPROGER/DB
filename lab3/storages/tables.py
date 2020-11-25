@@ -1,6 +1,7 @@
-from sqlalchemy import Table, Column, Integer, ForeignKey, Text, Float , Boolean , Date
+from sqlalchemy import Column, Integer, ForeignKey, Text, Float , Boolean , Date , Index
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.indexable import index_property
 
 Base = declarative_base()
 
@@ -8,7 +9,7 @@ class Books_users(Base):
     __tablename__ = "books_users"
     id = Column(Integer, primary_key=True)
     book_id = Column(Integer, ForeignKey('book.id'), nullable=False)
-    user_id = Column(Integer, ForeignKey('"user".id'), nullable=False)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
 
     def __init__(self , book_id , user_id):
         self.book_id = book_id

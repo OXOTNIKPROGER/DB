@@ -186,7 +186,7 @@ class View:
                 print("Incorrect date format")
                 continue
         publishing_house = input("Input publishing house:\n")
-        new_book = Book(0, title, date, publishing_house)
+        new_book = Book(title, date, publishing_house)
         return new_book
 
     @staticmethod

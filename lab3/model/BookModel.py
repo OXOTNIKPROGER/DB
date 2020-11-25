@@ -9,24 +9,11 @@ from sqlalchemy import exc
 class BookModel(DBModel):
     def __init__(self , dbname , user , password , host ):
         super(BookModel, self).__init__(dbname , user, password , host)
-        try:
-            self.cursor = self.conn.cursor()
-        except (Exception , psycopg2.DatabaseError) as error:
-            self.cursor.execute('ROLLBACK')
-            print(error)
-
-    def __del__(self):
-        try:
-            self.cursor.close()
-            self.conn.close()
-        except (Exception , psycopg2.DatabaseError) as error:
-            self.cursor.execute('ROLLBACK')
-            print(error)
 
     def get_entities(self):
         try:
             books = self.session.query(Book)
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
         return books
@@ -36,7 +23,7 @@ class BookModel(DBModel):
             self.delete_links(id)
             self.session.query(Book).filter_by(id = id).delete()
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
 
@@ -44,7 +31,7 @@ class BookModel(DBModel):
         try:
             book = self.session.query(Book).get(entity_id)
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
         return book
@@ -54,7 +41,7 @@ class BookModel(DBModel):
             new_entity = Books_authors(first_entity_id , second_entity_id)
             self.session.add(new_entity)
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             self.session.execute('ROLLBACK')
             print(error)
 
@@ -63,7 +50,7 @@ class BookModel(DBModel):
             self.session.query(Books_users).filter_by(book_id=entity_id).delete()
             self.session.query(Books_authors).filter_by(book_id=entity_id).delete()
             self.session.commit()
-        except(Exception, exc.DatabaseError) as error:
+        except(Exception, exc.DatabaseError , exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
 
@@ -72,7 +59,7 @@ class BookModel(DBModel):
             self.cursor.execute(request, data)
             datas = self.cursor.fetchall()
             self.conn.commit()
-        except (Exception , psycopg2.DatabaseError) as error:
+        except (Exception , psycopg2.DatabaseError , exc.InvalidRequestError) as error:
             self.cursor.execute('ROLLBACK')
             print(error)
         return datas
