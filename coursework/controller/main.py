@@ -128,6 +128,9 @@ def insert_generating_data():
         soup = BeautifulSoup(html_text, 'lxml')
         #############Create News##########################
         title = get_title(soup)
+        if dbModel.check_news(News , title):
+            os.remove(file)
+            continue
         author = get_author(soup)
         thema = get_thema(soup)
         #############Create Statistics##########################
@@ -166,5 +169,3 @@ def update_info():
         stat = dbModel.get_entity(Statistics , link.content_id)
         stat.views = views
         dbModel.update_entity(stat)
-
-update_info()

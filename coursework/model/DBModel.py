@@ -32,6 +32,20 @@ class DBModel:
             self.session.execute('ROLLBACK')
             print(error)
 
+    def check_news(self, entity_type, news_title):
+        exists = False
+        try:
+            exists = self.session.query(entity_type).filter_by(title=news_title).first()
+            if exists is None:
+                exists = False
+            else:
+                exists = True
+        except (Exception, exc.DatabaseError, exc.InvalidRequestError) as error:
+            self.session.execute('ROLLBACK')
+            print(error)
+        return exists
+
+
     def get_entity(self, entity_type, entity_id):
         try:
             entity = self.session.query(entity_type).get(entity_id)
