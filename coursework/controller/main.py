@@ -1,12 +1,12 @@
 from bs4 import BeautifulSoup
 import glob
 from model.DBModel import DBModel
-import requests
 from storage.tables import News
 from storage.tables import Statistics
 from storage.tables import Tags
 from storage.tables import Content
 import os
+from requests_futures import sessions
 
 dbModel = DBModel('coursework', 'postgres', 'Scorpions', 'localhost')
 
@@ -152,6 +152,19 @@ def insert_generating_data():
             dbModel.add_entity(new_tag)
         os.remove(file)
 
-insert_generating_data()
-# req = requests.get('https://tsn.ua/news/7-grudnya-den-velikomuchenici-katerini-yak-privitati-katerin-z-dnem-angela-1681972.html')
-# print(req)
+
+def update_info():
+    links = dbModel.get_entities(Content)
+    session = sessions.FuturesSession()
+    for link in links:
+        req = session.get(link.link)
+        html_text = req.result().text
+        soup = BeautifulSoup(html_text , 'lxml')
+        views = get_views(soup)
+        if views is None:
+            continue
+        stat = dbModel.get_entity(Statistics , link.content_id)
+        stat.views = views
+        dbModel.update_entity(stat)
+
+update_info()
