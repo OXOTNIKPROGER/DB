@@ -123,7 +123,8 @@ class SubscriptionModel(DBModel):
         return datas
 
     def generate(self , number):
-        request = 'INSERT INTO "subscription"(number , price , expire_date , number_of_books , user_id) SELECT  trunc(random()*%s)::int, trunc(random()*%s)::int,timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - timestamp \'1-1-1\') , trunc(random()*%s)::int , RANDOM() * (SELECT MAX(id) FROM "user") FROM generate_series(1 , %s)'
+        request = 'INSERT INTO "subscription"(number , price , expire_date , number_of_books , user_id) SELECT  trunc(random()*%s)::int, trunc(random()*%s)::int,timestamp \'1-1-1\' ' \
+                  '+ random()*(timestamp \'2020-10-10\' - timestamp \'1-1-1\') , trunc(random()*%s)::int , RANDOM() * (SELECT MAX(id) FROM "user") FROM generate_series(1 , %s)'
         data = (number , number , number , number)
         try:
             self.cursor.execute(request , data)

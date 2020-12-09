@@ -2,7 +2,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy import exc
 
-
 class DBModel:
     def __init__(self, dbname_, user_, password_, host_):
         self._dbname = dbname_
@@ -45,7 +44,6 @@ class DBModel:
             print(error)
         return exists
 
-
     def get_entity(self, entity_type, entity_id):
         try:
             entity = self.session.query(entity_type).get(entity_id)
@@ -71,3 +69,19 @@ class DBModel:
         except(Exception, exc.DatabaseError, exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
+
+    def update_themas_ukraine(self):
+        try:
+            self.session.execute("UPDATE news SET thema = 'Україна' WHERE thema = 'Укрaїнa'" )
+        except(Exception, exc.DatabaseError, exc.InvalidRequestError) as error:
+            print(error)
+            self.session.execute("ROLLBACK")
+
+
+    def do_request(self , request):
+        try:
+            result = self.session.execute(request).fetchall()
+        except(Exception, exc.DatabaseError, exc.InvalidRequestError) as error:
+            print(error)
+            self.session.execute("ROLLBACK")
+        return result

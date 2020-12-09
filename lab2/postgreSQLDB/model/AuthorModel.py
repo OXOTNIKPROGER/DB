@@ -125,7 +125,8 @@ class AuthorModel(DBModel):
         return datas
 
     def generate(self, number):
-        request = 'INSERT INTO "author"(name , date_of_first_publication , year_of_birth , year_of_death) SELECT MD5(random()::text), timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - timestamp \'1-1-1\') , trunc(random()*%s)::int , trunc(random()*%s)::int FROM generate_series(1 , %s)'
+        request = 'INSERT INTO "author"(name , date_of_first_publication , year_of_birth , year_of_death) SELECT MD5(random()::text), ' \
+                  'timestamp \'1-1-1\' + random()*(timestamp \'2020-10-10\' - timestamp \'1-1-1\') , trunc(random()*%s)::int , trunc(random()*%s)::int FROM generate_series(1 , %s)'
         data = (number , number , number)
         try:
             self.cursor.execute(request , data)
