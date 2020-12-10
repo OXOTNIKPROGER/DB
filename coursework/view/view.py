@@ -1,4 +1,3 @@
-
 class View:
     @staticmethod
     def print_header():
@@ -18,7 +17,7 @@ class View:
         print('тема -> {}'.format(news.thema))
 
     @staticmethod
-    def print_news(news , link):
+    def print_news(news, link):
         print('///////////////////////////////')
         print('id новини -> {}'.format(news.news_id))
         print('Назва новини -> {}'.format(news.title))
@@ -37,7 +36,6 @@ class View:
     @staticmethod
     def __check_input(user_input):
         return user_input.isdigit()
-
 
     @staticmethod
     def print_after_update():
@@ -80,8 +78,6 @@ class View:
             return desicion
         else:
             return -1
-
-
 
     @staticmethod
     def find_option():

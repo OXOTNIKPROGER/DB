@@ -1,18 +1,19 @@
-import glob
+from datetime import datetime
+from textwrap import wrap
 from bs4 import BeautifulSoup
 from model.DBModel import DBModel
 from storage.tables import News
 from storage.tables import Statistics
 from storage.tables import Tags
 from storage.tables import Content
-import os
+import matplotlib.pyplot as plt
+import concurrent.futures
 import concurrent.futures
 import requests
 import pandas as pd
-import matplotlib.pyplot as plt
-from datetime import datetime
 import numpy as np
-from textwrap import wrap
+import glob
+import os
 
 dbModel = DBModel('coursework', 'postgres', 'Scorpions', 'localhost')
 PLOT_LABEL_FONT_SIZE = 14
@@ -114,11 +115,13 @@ def get_tags(soup):
         tags = None
     return tags
 
+
 def get_news_link(news_id):
     contents = dbModel.get_entities(Content)
     for iterator in contents:
         if iterator.content_id == news_id:
             return iterator.link
+
 
 def get_link(soup):
     try:
