@@ -1,5 +1,5 @@
 from view.view import View
-from controller.controller_functions import update_info, insert_generating_data, delete_old_news , analize_views_per_hour , analize_views , analize_similar, get_all_news
+from controller.controller_functions import update_info, insert_generating_data, delete_old_news , analize_views_per_hour , analize_views , analize_similar, get_all_news , get_news_link
 import time
 
 def wait():
@@ -65,7 +65,8 @@ def menu():
                 wait()
                 continue
             for res in result:
-                View.print_news(res)
+                link = get_news_link(res.news_id)
+                View.print_news(res , link)
             wait()
             continue
         if option is 7:

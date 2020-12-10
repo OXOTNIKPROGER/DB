@@ -18,6 +18,14 @@ class View:
         print('тема -> {}'.format(news.thema))
 
     @staticmethod
+    def print_news(news , link):
+        print('///////////////////////////////')
+        print('id новини -> {}'.format(news.news_id))
+        print('Назва новини -> {}'.format(news.title))
+        print('тема -> {}'.format(news.thema))
+        print('Посилання на новину -> {}'.format(link))
+
+    @staticmethod
     def choose_news():
         print('Виберіть до якої новини знайти схожі(введіть id новини, попередньо скориставшись опцією 7)')
         id = input()

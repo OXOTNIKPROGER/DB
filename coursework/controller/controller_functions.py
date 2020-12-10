@@ -114,6 +114,11 @@ def get_tags(soup):
         tags = None
     return tags
 
+def get_news_link(news_id):
+    contents = dbModel.get_entities(Content)
+    for iterator in contents:
+        if iterator.content_id == news_id:
+            return iterator.link
 
 def get_link(soup):
     try:
