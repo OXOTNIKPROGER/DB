@@ -85,6 +85,26 @@ celerybeat-schedule
 venv/
 ENV/
 
+/app/config/parameters.yml
+/bin/
+/build/
+/composer.phar
+/vendor/
+/web/bundles/
+/app/bootstrap.php.cache
+/app/cache/*
+!app/cache/.gitkeep
+/app/config/parameters.yml
+/app/logs/*
+!app/logs/.gitkeep
+/app/phpunit.xml
+
+#IDE metadata
+**.idea/**
+
+#Bash files
+run.sh
+
 # Spyder project settings
 .spyderproject
 

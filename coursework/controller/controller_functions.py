@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup
 import glob
+from bs4 import BeautifulSoup
 from model.DBModel import DBModel
 from storage.tables import News
 from storage.tables import Statistics
