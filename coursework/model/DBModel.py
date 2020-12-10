@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy import exc
 
+
 class DBModel:
     def __init__(self, dbname_, user_, password_, host_):
         self._dbname = dbname_
@@ -62,6 +63,14 @@ class DBModel:
             self.session.execute("ROLLBACK")
         return entities
 
+    def delete_News(self , entity_type , entity_id):
+        try:
+            self.session.query(entity_type).filter_by(news_id=entity_id).delete()
+            self.session.commit()
+        except(Exception, exc.DatabaseError, exc.InvalidRequestError) as error:
+            print(error)
+            self.session.execute("ROLLBACK")
+
     def update_entity(self, update_entity):
         try:
             self.session.add(update_entity)
@@ -70,17 +79,18 @@ class DBModel:
             print(error)
             self.session.execute("ROLLBACK")
 
-    def update_themas_ukraine(self):
+    def update_themas_Ukraine(self):
         try:
-            self.session.execute("UPDATE news SET thema = 'Україна' WHERE thema = 'Укрaїнa'" )
+            self.session.execute("UPDATE news SET thema = 'Україна' WHERE thema = 'Укрaїнa'")
+            self.session.commit()
         except(Exception, exc.DatabaseError, exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")
 
-
-    def do_request(self , request):
+    def do_request(self, request):
         try:
             result = self.session.execute(request).fetchall()
+            self.session.commit()
         except(Exception, exc.DatabaseError, exc.InvalidRequestError) as error:
             print(error)
             self.session.execute("ROLLBACK")

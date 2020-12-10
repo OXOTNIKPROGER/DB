@@ -1,0 +1,37 @@
+from view.view import View
+from controller.controller_functions import update_info, insert_generating_data
+import time
+
+
+def wait():
+    time.sleep(int(1))
+
+def menu():
+    in_menu = True
+    while in_menu:
+        option = View.find_option()
+        if option is 0:
+            in_menu = False
+            continue
+        if option is -1:
+            wait()
+            continue
+        if option is 1:
+            View.print_on_update()
+            update_info()
+            View.print_after_update()
+            wait()
+            continue
+        if option is 2:
+            path = View.get_path_to_insert()
+            View.inserting_data()
+            status = insert_generating_data(path)
+            if status is -1:
+                View.print_error()
+            else:
+                View.completed_insert()
+            wait()
+            continue
+        if option is 3:
+            pass
+

@@ -38,15 +38,15 @@
                 <link rel="canonical" href="https://tsn.ua/online">
         
         
-                <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/root.css?v=80e5e">
-        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/bs.css?v=80e5e">
-        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/re-common.css?v=80e5e">
-        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/re-base.css?v=80e5e">
+                <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/root.css?v=4f03a">
+        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/bs.css?v=4f03a">
+        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/re-common.css?v=4f03a">
+        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/re-base.css?v=4f03a">
         
-        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/common.css?v=80e5e"></link>
-<link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/clndr.css?v=80e5e"></link>
-<link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/re-post.css?v=80e5e"></link>
-<link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/post.css?v=80e5e"></link>
+        <link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/common.css?v=4f03a"></link>
+<link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/clndr.css?v=4f03a"></link>
+<link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/re-post.css?v=4f03a"></link>
+<link rel="stylesheet" href="https://tsn.ua/src/restyle/desktop/css/post.css?v=4f03a"></link>
 
                 <meta property="og:title" content="Останні новини України, новини дня" />
         <meta property="og:description" content="Новини в Україні и світі. Останні новини ТСН. Найбільша база відео" />
@@ -111,7 +111,7 @@ window.gemiusUpdatePageCode = "B82bwO8e7EOB.iAi_tAbvnZ2jy21Ic72nLEf0U8wZ8z.y7";
 window.appEnv = "production";
 window.broadcastDomain = "https://broadcasts.tsn.ua";
 window.appBaseUrl = "https://tsn.ua";
-window.staticAsset = function (path) {return 'https://tsn.ua/{path}?v=80e5e'.replace('{path}', path)};
+window.staticAsset = function (path) {return 'https://tsn.ua/{path}?v=4f03a'.replace('{path}', path)};
 </script>
 
         <script>
@@ -148,7 +148,7 @@ window.adTargeting = {
                         <div class="c-logo__main ">
     <div class="l-sheet c-logo__box">
         <a href="https://tsn.ua" class="c-logo__link js-logo">
-            <img src="https://tsn.ua/src/restyle/desktop/img/logo.svg?v=80e5e" width="64" height="64" class="c-logo" alt="Логотип ТСН">
+            <img src="https://tsn.ua/src/restyle/desktop/img/logo.svg?v=4f03a" width="64" height="64" class="c-logo" alt="Логотип ТСН">
         </a>
     </div>
 </div>
@@ -217,35 +217,36 @@ window.adTargeting = {
     <div class="c-nav--shrink-x-lg">
         <div class="c-navix js-navix js-si-navs">
             <div class="c-nav__list c-nav--logo-h c-navix__main js-navix__main">
-                                                            <a href="https://coronavirus.tsn.ua" class="c-nav__btn c-nav--covid " >Коронавірус</a>
-                                            <a href="https://tsn.ua/news" class="c-nav__btn c-nav--all " >Всі новини</a>
-                                            <a href="https://tsn.ua/ukrayina" class="c-nav__btn c-nav--ukraine " >Україна</a>
-                                            <a href="https://tsn.ua/politika" class="c-nav__btn c-nav--politics " >Політика</a>
-                                            <a href="https://tsn.ua/prosport" class="c-nav__btn c-nav--sport " >Проспорт</a>
-                                            <a href="https://tsn.ua/glamur" class="c-nav__btn c-nav--glamor " >Гламур</a>
-                                            <a href="https://tsn.ua/lady" class="c-nav__btn c-nav--lady " >Леді</a>
-                                            <a href="https://tsn.ua/vypusky" class="c-nav__btn c-nav--tsn " >Випуски ТСН</a>
-                                            <a href="https://tsn.ua/astrologiya" class="c-nav__btn c-nav--astrology " >Астрологія</a>
-                                            <a href="https://tsn.ua/video/video-novini" class="c-nav__btn c-nav--video " >Відео</a>
-                                            <a href="https://tsn.ua/special-projects" class="c-nav__btn c-nav--special "  data-hidden style="opacity: 0" >Спецпроекти</a>
-                                            <a href="https://tsn.ua/groshi" class="c-nav__btn c-nav--economy "  data-hidden style="opacity: 0" >Економіка</a>
-                                            <a href="https://tsn.ua/foto" class="c-nav__btn c-nav--photo "  data-hidden style="opacity: 0" >Фото</a>
-                                            <a href="https://kyiv.tsn.ua" class="c-nav__btn c-nav--kyiv "  data-hidden style="opacity: 0" >Київ</a>
-                                            <a href="https://tsn.ua/blogi" class="c-nav__btn c-nav--blog "  data-hidden style="opacity: 0" >Блоги</a>
-                                            <a href="https://tsn.ua/tsikavinki" class="c-nav__btn c-nav--interesting "  data-hidden style="opacity: 0" >Цікавинки</a>
-                                            <a href="https://tsn.ua/ato" class="c-nav__btn c-nav--ato "  data-hidden style="opacity: 0" >Війна на Сході</a>
-                                            <a href="https://tsn.ua/svit" class="c-nav__btn c-nav--world "  data-hidden style="opacity: 0" >Світ</a>
-                                            <a href="https://tsn.ua/tourism" class="c-nav__btn c-nav--tourism "  data-hidden style="opacity: 0" >Туризм</a>
-                                            <a href="https://tsn.ua/auto" class="c-nav__btn c-nav--auto "  data-hidden style="opacity: 0" >Авто</a>
-                                            <a href="https://tsn.ua/nauka_it" class="c-nav__btn c-nav--science "  data-hidden style="opacity: 0" >Наука та IT</a>
-                                            <a href="https://tsn.ua/dopomoga" class="c-nav__btn c-nav--help "  data-hidden style="opacity: 0" >Допомога</a>
-                                            <a href="https://tsn.ua/interview" class="c-nav__btn c-nav--interview "  data-hidden style="opacity: 0" >Інтерв&#039;ю</a>
-                                            <a href="https://tsn.ua/infografika" class="c-nav__btn c-nav--infographic "  data-hidden style="opacity: 0" >Інфографіка</a>
-                                            <a href="https://tsn.ua/books" class="c-nav__btn c-nav--books "  data-hidden style="opacity: 0" >Книжки</a>
-                                            <a href="https://tsn.ua/online" class="c-nav__btn c-nav--online  c-nav--active "  data-hidden style="opacity: 0" >Онлайн</a>
-                                            <a href="https://tsn.ua/archive" class="c-nav__btn c-nav--archive "  data-hidden style="opacity: 0" >Архів</a>
-                                            <a href="https://tsn.ua/ampstories" class="c-nav__btn c-nav--ampstories "  data-hidden style="opacity: 0" >ТСН stories</a>
-                                            <a href="https://tsn.ua/podcasts" class="c-nav__btn c-nav--podcasts "  data-hidden style="opacity: 0" >Подкасти</a>
+                                                            <a href="https://coronavirus.tsn.ua" class="c-nav__btn c-nav--covid  "  data-nav="covid">Коронавірус</a>
+                                            <a href="https://tsn.ua/news" class="c-nav__btn c-nav--all  "  data-nav="all">Всі новини</a>
+                                            <a href="https://tsn.ua/ukrayina" class="c-nav__btn c-nav--ukraine  "  data-nav="ukraine">Україна</a>
+                                            <a href="https://tsn.ua/politika" class="c-nav__btn c-nav--politics  "  data-nav="politics">Політика</a>
+                                            <a href="https://tsn.ua/prosport" class="c-nav__btn c-nav--sport  "  data-nav="sport">Проспорт</a>
+                                            <a href="https://tsn.ua/glamur" class="c-nav__btn c-nav--glamor  "  data-nav="glamor">Гламур</a>
+                                            <a href="https://tsn.ua/lady" class="c-nav__btn c-nav--lady  "  data-nav="lady">Леді</a>
+                                            <a href="https://tsn.ua/vypusky" class="c-nav__btn c-nav--tsn  "  data-nav="tsn">Випуски ТСН</a>
+                                            <a href="https://tsn.ua/astrologiya" class="c-nav__btn c-nav--astrology  "  data-nav="astrology">Астрологія</a>
+                                            <a href="https://tsn.ua/video/video-novini" class="c-nav__btn c-nav--video  "  data-nav="video">Відео</a>
+                                            <a href="https://tsn.ua/special-projects" class="c-nav__btn c-nav--special  "  data-hidden style="opacity: 0"  data-nav="special">Спецпроекти</a>
+                                            <a href="https://tsn.ua/groshi" class="c-nav__btn c-nav--economy  "  data-hidden style="opacity: 0"  data-nav="economy">Економіка</a>
+                                            <a href="https://tsn.ua/foto" class="c-nav__btn c-nav--photo  "  data-hidden style="opacity: 0"  data-nav="photo">Фото</a>
+                                            <a href="https://kyiv.tsn.ua" class="c-nav__btn c-nav--kyiv  "  data-hidden style="opacity: 0"  data-nav="kyiv">Київ</a>
+                                            <a href="https://lviv.tsn.ua" class="c-nav__btn c-nav--lviv  c-nav--tsn  "  data-hidden style="opacity: 0"  data-nav="lviv">Львів</a>
+                                            <a href="https://tsn.ua/blogi" class="c-nav__btn c-nav--blog  "  data-hidden style="opacity: 0"  data-nav="blog">Блоги</a>
+                                            <a href="https://tsn.ua/tsikavinki" class="c-nav__btn c-nav--interesting  "  data-hidden style="opacity: 0"  data-nav="interesting">Цікавинки</a>
+                                            <a href="https://tsn.ua/ato" class="c-nav__btn c-nav--ato  "  data-hidden style="opacity: 0"  data-nav="ato">Війна на Сході</a>
+                                            <a href="https://tsn.ua/svit" class="c-nav__btn c-nav--world  "  data-hidden style="opacity: 0"  data-nav="world">Світ</a>
+                                            <a href="https://tsn.ua/tourism" class="c-nav__btn c-nav--tourism  "  data-hidden style="opacity: 0"  data-nav="tourism">Туризм</a>
+                                            <a href="https://tsn.ua/auto" class="c-nav__btn c-nav--auto  "  data-hidden style="opacity: 0"  data-nav="auto">Авто</a>
+                                            <a href="https://tsn.ua/nauka_it" class="c-nav__btn c-nav--science  "  data-hidden style="opacity: 0"  data-nav="science">Наука та IT</a>
+                                            <a href="https://tsn.ua/dopomoga" class="c-nav__btn c-nav--help  "  data-hidden style="opacity: 0"  data-nav="help">Допомога</a>
+                                            <a href="https://tsn.ua/interview" class="c-nav__btn c-nav--interview  "  data-hidden style="opacity: 0"  data-nav="interview">Інтерв&#039;ю</a>
+                                            <a href="https://tsn.ua/infografika" class="c-nav__btn c-nav--infographic  "  data-hidden style="opacity: 0"  data-nav="infographic">Інфографіка</a>
+                                            <a href="https://tsn.ua/books" class="c-nav__btn c-nav--books  "  data-hidden style="opacity: 0"  data-nav="books">Книжки</a>
+                                            <a href="https://tsn.ua/online" class="c-nav__btn c-nav--online   c-nav--active "  data-hidden style="opacity: 0"  data-nav="online">Онлайн</a>
+                                            <a href="https://tsn.ua/archive" class="c-nav__btn c-nav--archive  "  data-hidden style="opacity: 0"  data-nav="archive">Архів</a>
+                                            <a href="https://tsn.ua/ampstories" class="c-nav__btn c-nav--ampstories  "  data-hidden style="opacity: 0"  data-nav="ampstories">ТСН stories</a>
+                                            <a href="https://tsn.ua/podcasts" class="c-nav__btn c-nav--podcasts  "  data-hidden style="opacity: 0"  data-nav="podcasts">Подкасти</a>
                                                 </div>
             <div class="c-navix__menu c-nav--logo-h"  data-hidden style="opacity: 0" >
                 <button type="button" id="navMoreBtn" data-controls="navMoreBox" class="c-nav__btn js-switcher-btn">Ще…</button>
@@ -277,31 +278,31 @@ window.adTargeting = {
                 <div class="c-banner-sub__body">
                                         <dl class="l-box c-banner__dl">
                         <dt>Інфіковані</dt>
-                        <dd class="c-banner-sub--bold">845343</dd>
+                        <dd class="c-banner-sub--bold">858714</dd>
                     </dl>
                     
                                         <dl class="l-box c-banner__dl">
                         <dt>Нові хворі</dt>
-                        <dd class="c-banner-sub--bold">12585</dd>
+                        <dd class="c-banner-sub--bold">13371</dd>
                     </dl>
                     
                     <dl class="l-box c-banner__dl">
                         <dt>Одужало</dt>
                         <dd>
-                             451118                                                             <sup class="c-banner-sub--bold">+14554</sup>
+                             465021                                                             <sup class="c-banner-sub--bold">+13903</sup>
                                                     </dd>
                     </dl>
 
                     <dl class="l-box c-banner__dl">
                         <dt>Летальні</dt>
                         <dd>
-                             14204                                                             <sup class="c-banner-sub--bold">+276</sup>
+                             14470                                                             <sup class="c-banner-sub--bold">+266</sup>
                                                     </dd>
                     </dl>
                 </div>
 
                                     <div class="l-box l-col--xs c-banner-sub__foot">
-                        <p>Дані <abbr title="Міністерства охорони здоров’я">МОЗ</abbr> на&nbsp;<time datetime="2020-12-09T08:20:00+02:00">09.12&nbsp;08:20</time>                        </p>
+                        <p>Дані <abbr title="Міністерства охорони здоров’я">МОЗ</abbr> на&nbsp;<time datetime="2020-12-10T08:20:00+02:00">10.12&nbsp;08:20</time>                        </p>
                     </div>
                             </div>
         </div>
@@ -313,22 +314,16 @@ window.adTargeting = {
     <article>
         <div class="c-video-embed">
             <div class="c-entry-lg">
-                <h1 class="p-name c-post-title u-uppercase">Спецкор</h1>
+                <h1 class="p-name c-post-title u-uppercase">ТСН.14:00</h1>
             </div>
 
             <div class="c-video-embed-row">
                 <div class="c-video-embed-col">
-                    <div class=" embed-responsive embed-responsive-16by9 o-screen-lock-box">
-                        <div class="embed-responsive-item c-video-cap">
-                            <h4 class="c-video-cap-title">Дивіться на tsn.ua</h4>
-
-                            <time class="c-video-cap-time" datetime="2020-12-09T18:15:00+02:00">Сьогодні, 18:15</time>
-
-                            <p>Спецкор</p>
-                        </div>
+                    <div class="embed-responsive-16by9 o-screen-lock-box">
+                        <iframe frameborder="0" allow="autoplay" allowfullscreen class="embed-responsive-item" src="https://1plus1.video/tvguide/embed/1?l=ua&amp;autoplay=0&amp;to=true&amp;logo=tsn" title="ТСН.14:00"></iframe>
                     </div>
 
-                    <div class="e-content c-video-text">"Спецкор" - побачте на власні очі ситуацію з передової і першим дізнайтесь про те, що там відбувається. Репортажі з зони бойових дій на Сході, актуальні новини з місця подій.</div>
+                    <div class="e-content c-video-text">Випуск ТСН о 14:00 - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</div>
                 </div>
 
                 <div class="c-video-embed-col">
@@ -355,23 +350,23 @@ window.adTargeting = {
                 <a href="https://tsn.ua/online?day=8&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
                     <time datetime="2020-12-08">
                         <abbr title="Вівторок">Вт</abbr>
+                        <span class="c-nav__date">08.12</span>
+                    </time>
+                </a>
+            </li>
+                    <li >
+                <a href="https://tsn.ua/online?day=9&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
+                    <time datetime="2020-12-09">
+                        <abbr title="Середа">Ср</abbr>
                         <span class="c-nav__date">Вчора</span>
                     </time>
                 </a>
             </li>
                     <li  class="c-nav--current" >
-                <a href="https://tsn.ua/online?day=9&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
-                    <time datetime="2020-12-09">
-                        <abbr title="Середа">Ср</abbr>
-                        <span class="c-nav__date">Сьогодні</span>
-                    </time>
-                </a>
-            </li>
-                    <li >
                 <a href="https://tsn.ua/online?day=10&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
                     <time datetime="2020-12-10">
                         <abbr title="Четвер">Чт</abbr>
-                        <span class="c-nav__date">10.12</span>
+                        <span class="c-nav__date">Сьогодні</span>
                     </time>
                 </a>
             </li>
@@ -402,14 +397,14 @@ window.adTargeting = {
         
         <li class="u-ml--auto">
             <button type="button" id="clndrBtn3" class="c-nav__btn c-nav--logo-h js-switcher-btn" data-controls="clndrBox">
-                <time datetime="2020-12-09">
-                    <abbr title="Середа" class="c-nav__label i-reset--a i-calendar">Ср</abbr>
+                <time datetime="2020-12-10">
+                    <abbr title="Середа" class="c-nav__label i-reset--a i-calendar">Чт</abbr>
                     <span class="c-nav__date">Сьогодні</span>
                 </time>
             </button>
 
             <div id="clndrBox" class="c-nav__menu c-nav__menu--rtl u-pb--0" aria-labelledby="clndrBtn">
-                <div class="js-clndr" data-date="2020-12-09" data-month="12" data-year="2020" data-day="09" data-end-date="2020-12-20">
+                <div class="js-clndr" data-date="2020-12-10" data-month="12" data-year="2020" data-day="10" data-end-date="2020-12-20">
                     <script type="text/template" class="js-clndr-tpl">
                         <div class="clndr-controls">
                             <button class="clndr-previous-button clndr-btn" aria-label="Попередній місяць" data-switcher-skip="true"></button>
@@ -468,8 +463,8 @@ window.adTargeting = {
                                     </div>
                 <div class="c-card__head">
                     <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-9-grudnya-2020-roku-1684045.html"  class="c-card__link">
-                            <time datetime="2020-12-09T07:00:00+02:00">07:00</time>
+                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-10-grudnya-2020-roku-1684921.html"  class="c-card__link">
+                            <time datetime="2020-12-10T07:00:00+02:00">07:00</time>
                             ТСН.Ранок
                         </a>
                     </h3>
@@ -489,8 +484,8 @@ window.adTargeting = {
                                     </div>
                 <div class="c-card__head">
                     <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-9-grudnya-2020-roku-1684045.html"  class="c-card__link">
-                            <time datetime="2020-12-09T08:00:00+02:00">08:00</time>
+                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-10-grudnya-2020-roku-1684921.html"  class="c-card__link">
+                            <time datetime="2020-12-10T08:00:00+02:00">08:00</time>
                             ТСН.Ранок
                         </a>
                     </h3>
@@ -510,8 +505,8 @@ window.adTargeting = {
                                     </div>
                 <div class="c-card__head">
                     <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-9-grudnya-2020-roku-1684045.html"  class="c-card__link">
-                            <time datetime="2020-12-09T09:00:00+02:00">09:00</time>
+                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-10-grudnya-2020-roku-1684921.html"  class="c-card__link">
+                            <time datetime="2020-12-10T09:00:00+02:00">09:00</time>
                             ТСН.Ранок
                         </a>
                     </h3>
@@ -531,8 +526,8 @@ window.adTargeting = {
                                     </div>
                 <div class="c-card__head">
                     <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_1200/vipusk-tsn-12-00-za-9-grudnya-2020-roku-1684321.html"  class="c-card__link">
-                            <time datetime="2020-12-09T12:00:00+02:00">12:00</time>
+                        <a  href="https://tsn.ua/vypusky/tsn_1200/vipusk-tsn-12-00-za-10-grudnya-2020-roku-1685164.html"  class="c-card__link">
+                            <time datetime="2020-12-10T12:00:00+02:00">12:00</time>
                             ТСН.12:00
                         </a>
                     </h3>
@@ -549,11 +544,12 @@ window.adTargeting = {
                         <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.14:00">
                         </div>
 
+                                            <span class="c-card__badge"><span class="c-card__badge-title">Наживо</span></span>
                                     </div>
                 <div class="c-card__head">
                     <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_1400/vipusk-tsn-14-00-za-9-grudnya-2020-roku-1684405.html"  class="c-card__link">
-                            <time datetime="2020-12-09T14:00:00+02:00">14:00</time>
+                        <a  href="https://tsn.ua/online/1338121"  class="c-card__link">
+                            <time datetime="2020-12-10T14:00:00+02:00">14:00</time>
                             ТСН.14:00
                         </a>
                     </h3>
@@ -574,7 +570,7 @@ window.adTargeting = {
                 <div class="c-card__head">
                     <h3 class="c-card__title">
                         <a  class="c-card__link">
-                            <time datetime="2020-12-09T16:45:00+02:00">16:45</time>
+                            <time datetime="2020-12-10T16:45:00+02:00">16:45</time>
                             ТСН.16:45
                         </a>
                     </h3>
@@ -595,7 +591,7 @@ window.adTargeting = {
                 <div class="c-card__head">
                     <h3 class="c-card__title">
                         <a  class="c-card__link">
-                            <time datetime="2020-12-09T18:15:00+02:00">18:15</time>
+                            <time datetime="2020-12-10T18:15:00+02:00">18:15</time>
                             Спецкор
                         </a>
                     </h3>
@@ -616,7 +612,7 @@ window.adTargeting = {
                 <div class="c-card__head">
                     <h3 class="c-card__title">
                         <a  class="c-card__link">
-                            <time datetime="2020-12-09T19:29:00+02:00">19:29</time>
+                            <time datetime="2020-12-10T19:29:00+02:00">19:29</time>
                             ТСН.19:30 жестовою мовою
                         </a>
                     </h3>
@@ -637,7 +633,7 @@ window.adTargeting = {
                 <div class="c-card__head">
                     <h3 class="c-card__title">
                         <a  class="c-card__link">
-                            <time datetime="2020-12-09T19:30:00+02:00">19:30</time>
+                            <time datetime="2020-12-10T19:30:00+02:00">19:30</time>
                             ТСН.19:30
                         </a>
                     </h3>
@@ -653,47 +649,47 @@ window.adTargeting = {
     <ul class="c-partners u-mb--0">
         <li>
             <a href="https://1plus1.ua" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/1plus1-media.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/1plus1-media.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="https://tet.tv" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/tet.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/tet.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="https://2plus2.ua" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/2plus2.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/2plus2.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="http://plus-plus.tv" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/plusplus-tv.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/plusplus-tv.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="https://int.1plus1.ua" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/1plus1-international.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/1plus1-international.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="http://biguditv.com" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/bigudi.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/bigudi.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="https://www.unian.ua" target="_blank" rel="noopener" class="u-spacer--nmt2">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/unian.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/unian.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="https://1plus1.video/" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/1plus1-video.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/1plus1-video.svg?v=4f03a" alt="">
             </a>
         </li>
         <li>
             <a href="https://paramountcomedy.com.ua/" target="_blank" rel="noopener">
-                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/paramount.svg?v=80e5e" alt="">
+                <img class="lazyload" data-src="https://tsn.ua/src/restyle/desktop/img/partners/paramount.svg?v=4f03a" alt="">
             </a>
         </li>
     </ul>
@@ -724,19 +720,19 @@ window.adTargeting = {
                 <ul class="c-misc__list">
                     <li>
                         <a href="https://play.google.com/store/apps/details?id=ua.tsn.TCH_3&hl=ua" target="_blank" rel="noopener">
-                            <img data-src="https://tsn.ua/src/restyle/desktop/img/stores/google-play-uk.svg?v=80e5e" class="c-misc__img lazyload" alt="">
+                            <img data-src="https://tsn.ua/src/restyle/desktop/img/stores/google-play-uk.svg?v=4f03a" class="c-misc__img lazyload" alt="">
                         </a>
                     </li>
                     <li>
                         <a href="https://itunes.apple.com/ua/app/%D1%82%D1%81%D0%BD/id694696014" target="_blank" rel="noopener">
-                            <img data-src="https://tsn.ua/src/restyle/desktop/img/stores/app-store-en.svg?v=80e5e" class="c-misc__img lazyload" alt="">
+                            <img data-src="https://tsn.ua/src/restyle/desktop/img/stores/app-store-en.svg?v=4f03a" class="c-misc__img lazyload" alt="">
                         </a>
                     </li>
                 </ul>
             </div>
             <div class="l-col l-box">
                 <a href="https://tsn.ua/rss/full.rss" target="_blank" rel="noopener">
-                    <img data-src="https://tsn.ua/src/restyle/desktop/img/rss.svg?v=80e5e" class="c-misc__img lazyload" alt="">
+                    <img data-src="https://tsn.ua/src/restyle/desktop/img/rss.svg?v=4f03a" class="c-misc__img lazyload" alt="">
                 </a>
             </div>
         </div>
@@ -871,7 +867,7 @@ window.adTargeting = {
         <div class="c-notification__main">
             <div class="c-notification__meta">
                 <div class="c-notification__logo">
-                    <img src="https://tsn.ua/src/restyle/desktop/img/logo.svg?v=80e5e" class="c-logo" alt="">
+                    <img src="https://tsn.ua/src/restyle/desktop/img/logo.svg?v=4f03a" class="c-logo" alt="">
                 </div>
             </div>
             <div class="c-notification__body">
@@ -897,8 +893,8 @@ window.adTargeting = {
         <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit&hl=uk"></script>
 <script src="https://1plus1.video/static/player/js/api.min.js"></script>
 
-                <script src="https://tsn.ua/src/restyle/desktop/js/app.min.js?v=80e5e"></script>
+                <script src="https://tsn.ua/src/restyle/desktop/js/app.min.js?v=4f03a"></script>
         
-        <script src="https://tsn.ua/src/restyle/desktop/js/clndr.js?v=80e5e"></script>
+        <script src="https://tsn.ua/src/restyle/desktop/js/clndr.js?v=4f03a"></script>
     </body>
 </html>

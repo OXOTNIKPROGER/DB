@@ -10,7 +10,6 @@ import concurrent.futures
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib import cm
 from datetime import datetime
 import numpy as np
 from textwrap import wrap
@@ -130,24 +129,22 @@ def get_link(soup):
     return link
 
 
-def insert_generating_data():
-    files = glob.glob('webdata/*.html')
+def insert_generating_data(path):
+    files = glob.glob('{}/*.html'.format(path))
+    if files is []:
+        return -1
     for file in files:
         html_text = read_text_file(file)
         soup = BeautifulSoup(html_text, 'lxml')
-        #############Create News##########################
         title = get_title(soup)
         if dbModel.check_news(News, title):
             os.remove(file)
             continue
         author = get_author(soup)
         thema = get_thema(soup)
-        #############Create Statistics##########################
         views = get_views(soup)
         time = get_time(soup)
-        ################Create Tags##############################
         tags = get_tags(soup)
-        ##############Create Content#############################
         link = get_link(soup)
 
         if title is None or link is None or views is None or time is None or thema is None or tags is None:
@@ -163,7 +160,8 @@ def insert_generating_data():
             new_tag = Tags(tag, news.news_id)
             dbModel.add_entity(new_tag)
         os.remove(file)
-    dbModel.update_themas_ukraine()
+    dbModel.update_themas_Ukraine()
+    return 1
 
 
 class request_result:
@@ -218,10 +216,10 @@ def get_duration_in_seconds(duration):
 def analize_views():
     df = create_News_arguments_table()
     selected_df = df[['views', 'thema']]
-    selected_df = selected_df.groupby('thema')['views'].sum().reset_index().sort_values(by=['views'], ascending=False)
-    plt.title('Кількість переглядів по темам станом на {}'.format(datetime.now()), fontsize=PLOT_LABEL_FONT_SIZE)
+    selected_df = selected_df.groupby('thema')['views'].median().reset_index().sort_values(by=['views'], ascending=False)
+    plt.title('Медіана переглядів станом на {}'.format(datetime.now()), fontsize=PLOT_LABEL_FONT_SIZE)
     plt.bar(selected_df['thema'], selected_df['views'], color=getColors(len(selected_df['thema'])))
-    plt.ylabel('Кількість переглядів', fontsize=PLOT_LABEL_FONT_SIZE)
+    plt.ylabel('медіанне значення переглядів', fontsize=PLOT_LABEL_FONT_SIZE)
     plt.xticks(rotation=90, fontsize=PLOT_MEANING_FONT_SIZE)
     plt.show()
 
@@ -269,3 +267,4 @@ def analize_similar(news_id):
     for news_id in selected_df['n_id']:
         result.append(dbModel.get_entity(News , news_id))
     return result
+
