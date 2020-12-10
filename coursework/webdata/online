@@ -314,16 +314,22 @@ window.adTargeting = {
     <article>
         <div class="c-video-embed">
             <div class="c-entry-lg">
-                <h1 class="p-name c-post-title u-uppercase">ТСН.14:00</h1>
+                <h1 class="p-name c-post-title u-uppercase">ТСН.16:45</h1>
             </div>
 
             <div class="c-video-embed-row">
                 <div class="c-video-embed-col">
-                    <div class="embed-responsive-16by9 o-screen-lock-box">
-                        <iframe frameborder="0" allow="autoplay" allowfullscreen class="embed-responsive-item" src="https://1plus1.video/tvguide/embed/1?l=ua&amp;autoplay=0&amp;to=true&amp;logo=tsn" title="ТСН.14:00"></iframe>
+                    <div class=" embed-responsive embed-responsive-16by9 o-screen-lock-box">
+                        <div class="embed-responsive-item c-video-cap">
+                            <h4 class="c-video-cap-title">Дивіться на tsn.ua</h4>
+
+                            <time class="c-video-cap-time" datetime="2020-12-10T16:45:00+02:00">Сьогодні, 16:45</time>
+
+                            <p>ТСН.16:45</p>
+                        </div>
                     </div>
 
-                    <div class="e-content c-video-text">Випуск ТСН о 14:00 - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</div>
+                    <div class="e-content c-video-text">Випуск ТСН о 16:45 - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</div>
                 </div>
 
                 <div class="c-video-embed-col">
@@ -544,11 +550,10 @@ window.adTargeting = {
                         <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.14:00">
                         </div>
 
-                                            <span class="c-card__badge"><span class="c-card__badge-title">Наживо</span></span>
                                     </div>
                 <div class="c-card__head">
                     <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/online/1338121"  class="c-card__link">
+                        <a  class="c-card__link">
                             <time datetime="2020-12-10T14:00:00+02:00">14:00</time>
                             ТСН.14:00
                         </a>

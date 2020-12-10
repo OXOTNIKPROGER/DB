@@ -129,6 +129,14 @@ def get_link(soup):
     return link
 
 
+def delete_old_news():
+    length = dbModel.get_entities(News).count()
+    old_length = int(length * 0.05)
+    news = dbModel.get_entities(News).order_by(News.news_id)
+    for iterator in range(0, old_length):
+        dbModel.delete_News(News, news[0].news_id)
+
+
 def insert_generating_data(path):
     files = glob.glob('{}/*.html'.format(path))
     if files is []:
@@ -146,7 +154,6 @@ def insert_generating_data(path):
         time = get_time(soup)
         tags = get_tags(soup)
         link = get_link(soup)
-
         if title is None or link is None or views is None or time is None or thema is None or tags is None:
             os.remove(file)
             continue
@@ -195,7 +202,8 @@ def update_info():
 
 
 def create_News_arguments_table():
-    trends = dbModel.do_request("with thema_views as(SELECT * FROM statistics JOIN news ON statistics_id = news.news_id) SELECT * , current_timestamp - time as duration FROM thema_views")
+    trends = dbModel.do_request(
+        "with thema_views as(SELECT * FROM statistics JOIN news ON statistics_id = news.news_id) SELECT * , current_timestamp - time as duration FROM thema_views")
     df = pd.DataFrame(trends,
                       columns=['statistics_id', 'views', 'time', 'news_id', 'title', 'author', 'thema', 'duration'])
     return df
@@ -210,13 +218,15 @@ def getColors(n):
 
 
 def get_duration_in_seconds(duration):
-    result = duration.days*24*60*60 + duration.seconds
+    result = duration.days * 24 * 60 * 60 + duration.seconds
     return result
+
 
 def analize_views():
     df = create_News_arguments_table()
     selected_df = df[['views', 'thema']]
-    selected_df = selected_df.groupby('thema')['views'].median().reset_index().sort_values(by=['views'], ascending=False)
+    selected_df = selected_df.groupby('thema')['views'].median().reset_index().sort_values(by=['views'],
+                                                                                           ascending=False)
     plt.title('Медіана переглядів станом на {}'.format(datetime.now()), fontsize=PLOT_LABEL_FONT_SIZE)
     plt.bar(selected_df['thema'], selected_df['views'], color=getColors(len(selected_df['thema'])))
     plt.ylabel('медіанне значення переглядів', fontsize=PLOT_LABEL_FONT_SIZE)
@@ -229,14 +239,14 @@ def analize_views_per_hour():
     speed_data = []
     title_data = []
     news_ids_data = []
-    for iterator in range(0 , len(df)):
-        hours = get_duration_in_seconds(df['duration'][iterator])/3600
-        speed_data.append((df['views'][iterator]/hours))
+    for iterator in range(0, len(df)):
+        hours = get_duration_in_seconds(df['duration'][iterator]) / 3600
+        speed_data.append((df['views'][iterator] / hours))
         title_data.append(df['title'][iterator])
         news_ids_data.append(df['news_id'][iterator])
-    title_data = ['\n'.join(wrap(t, 20)) for t in title_data ]
-    selected_df = pd.DataFrame({'news_id': news_ids_data , 'title': title_data , 'speed': speed_data})
-    selected_df = selected_df.sort_values(by=['speed'] , ascending=False).head(10)
+    title_data = ['\n'.join(wrap(t, 20)) for t in title_data]
+    selected_df = pd.DataFrame({'news_id': news_ids_data, 'title': title_data, 'speed': speed_data})
+    selected_df = selected_df.sort_values(by=['speed'], ascending=False).head(10)
     plt.title('Топ 10 найгарячіших новин станом на {}'.format(datetime.now()), fontsize=PLOT_LABEL_FONT_SIZE)
     plt.bar(selected_df['title'], selected_df['speed'], color=getColors(len(selected_df['title'])))
     plt.ylabel('Швидкість переглядів за годину', fontsize=PLOT_LABEL_FONT_SIZE)
@@ -244,27 +254,34 @@ def analize_views_per_hour():
     plt.show()
 
 
+def get_all_news():
+    result = dbModel.get_entities(News).order_by(News.news_id)
+    return result
+
+
 def create_tags_arguments():
-    tags = dbModel.do_request("with news_tags as (SELECT * , news.news_id as n_id FROM news JOIN tags ON news.news_id = tags.news_id JOIN statistics ON statistics.statistics_id = news.news_id) SELECT n_id , title , tag , thema , views FROM news_tags")
-    df = pd.DataFrame(tags , columns=['n_id' , 'title' , 'tag' , 'thema' , 'views'])
+    tags = dbModel.do_request(
+        "with news_tags as (SELECT * , news.news_id as n_id FROM news JOIN tags ON news.news_id = tags.news_id JOIN statistics ON statistics.statistics_id = news.news_id) SELECT n_id , title , tag , thema , views FROM news_tags")
+    df = pd.DataFrame(tags, columns=['n_id', 'title', 'tag', 'thema', 'views'])
     return df
 
 
 def analize_similar(news_id):
     df = create_tags_arguments()
-    selected_df = df[[ 'n_id' ,  'tag' , 'title' , 'views']]
+    selected_df = df[['n_id', 'tag', 'title', 'views']]
     tags_df = selected_df
     selected_df = selected_df.loc[selected_df['n_id'] == news_id]
+    if len(selected_df) is 0:
+        return -1
     list_of_tags = selected_df['tag']
     selected_df = selected_df[0:0]
     for tag in list_of_tags:
         current_tag_df = tags_df
         current_tag_df = current_tag_df.loc[(current_tag_df['tag'] == tag) & (current_tag_df['n_id'] != news_id)]
-        current_tag_df = current_tag_df.sort_values(by='views' , ascending=False).head(2)
+        current_tag_df = current_tag_df.sort_values(by='views', ascending=False).head(2)
         if len(current_tag_df) != 0:
             selected_df = selected_df.append(current_tag_df, ignore_index=True)
     result = []
     for news_id in selected_df['n_id']:
-        result.append(dbModel.get_entity(News , news_id))
+        result.append(dbModel.get_entity(News, news_id))
     return result
-
