@@ -233,7 +233,8 @@ def get_duration_in_seconds(duration):
 def analize_views():
     df = create_News_arguments_table()
     selected_df = df[['views', 'thema']]
-    selected_df = selected_df.groupby('thema')['views'].median().reset_index().sort_values(by=['views'], ascending=False)
+    selected_df = selected_df.groupby('thema')['views'].median().reset_index().sort_values(by=['views'],
+                                                                                           ascending=False)
     plt.title('Медіана переглядів станом на {}'.format(datetime.now()), fontsize=PLOT_LABEL_FONT_SIZE)
     plt.bar(selected_df['thema'], selected_df['views'], color=getColors(len(selected_df['thema'])))
     plt.ylabel('медіанне значення переглядів', fontsize=PLOT_LABEL_FONT_SIZE)
@@ -292,3 +293,20 @@ def analize_similar(news_id):
     for news_id in selected_df['n_id']:
         result.append(dbModel.get_entity(News, news_id))
     return result
+
+
+def analize_authors():
+    df = create_News_arguments_table()
+    df = df[['views', 'author', 'news_id']]
+    selected_df = df.groupby('author')['views'].count().reset_index().sort_values(by='views', ascending=False)
+    plt.title('Частка статей автора:', fontsize=PLOT_LABEL_FONT_SIZE)
+    plt.bar(selected_df['author'], selected_df['views'], color=getColors(len(selected_df['author'])))
+    plt.ylabel('Кількість статей', fontsize=PLOT_LABEL_FONT_SIZE)
+    plt.xticks(rotation=90, fontsize=PLOT_MEANING_FONT_SIZE)
+    plt.show()
+    selected_df = df.groupby('author')['views'].median().reset_index().sort_values(by='views', ascending=False)
+    plt.title('Медіана переглядів статей автора', fontsize=PLOT_LABEL_FONT_SIZE)
+    plt.bar(selected_df['author'], selected_df['views'], color=getColors(len(selected_df['author'])))
+    plt.ylabel('медіанне значення переглядів', fontsize=PLOT_LABEL_FONT_SIZE)
+    plt.xticks(rotation=90, fontsize=PLOT_MEANING_FONT_SIZE)
+    plt.show()

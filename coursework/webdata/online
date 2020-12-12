@@ -278,31 +278,31 @@ window.adTargeting = {
                 <div class="c-banner-sub__body">
                                         <dl class="l-box c-banner__dl">
                         <dt>Інфіковані</dt>
-                        <dd class="c-banner-sub--bold">858714</dd>
+                        <dd class="c-banner-sub--bold">885039</dd>
                     </dl>
                     
                                         <dl class="l-box c-banner__dl">
                         <dt>Нові хворі</dt>
-                        <dd class="c-banner-sub--bold">13371</dd>
+                        <dd class="c-banner-sub--bold">12811</dd>
                     </dl>
                     
                     <dl class="l-box c-banner__dl">
                         <dt>Одужало</dt>
                         <dd>
-                             465021                                                             <sup class="c-banner-sub--bold">+13903</sup>
+                             494001                                                             <sup class="c-banner-sub--bold">+13653</sup>
                                                     </dd>
                     </dl>
 
                     <dl class="l-box c-banner__dl">
                         <dt>Летальні</dt>
                         <dd>
-                             14470                                                             <sup class="c-banner-sub--bold">+266</sup>
+                             14998                                                             <sup class="c-banner-sub--bold">+243</sup>
                                                     </dd>
                     </dl>
                 </div>
 
                                     <div class="l-box l-col--xs c-banner-sub__foot">
-                        <p>Дані <abbr title="Міністерства охорони здоров’я">МОЗ</abbr> на&nbsp;<time datetime="2020-12-10T08:20:00+02:00">10.12&nbsp;08:20</time>                        </p>
+                        <p>Дані <abbr title="Міністерства охорони здоров’я">МОЗ</abbr> на&nbsp;<time datetime="2020-12-12T08:20:00+02:00">12.12&nbsp;08:20</time>                        </p>
                     </div>
                             </div>
         </div>
@@ -314,7 +314,7 @@ window.adTargeting = {
     <article>
         <div class="c-video-embed">
             <div class="c-entry-lg">
-                <h1 class="p-name c-post-title u-uppercase">ТСН.Ранок</h1>
+                <h1 class="p-name c-post-title u-uppercase">ТСН.Тиждень жестовою мовою</h1>
             </div>
 
             <div class="c-video-embed-row">
@@ -323,13 +323,13 @@ window.adTargeting = {
                         <div class="embed-responsive-item c-video-cap">
                             <h4 class="c-video-cap-title">Дивіться на tsn.ua</h4>
 
-                            <time class="c-video-cap-time" datetime="2020-12-11T07:00:00+02:00">Завтра, 07:00</time>
+                            <time class="c-video-cap-time" datetime="2020-12-13T19:29:00+02:00">Завтра, 19:29</time>
 
-                            <p>ТСН.Ранок</p>
+                            <p>ТСН.Тиждень жестовою мовою</p>
                         </div>
                     </div>
 
-                    <div class="e-content c-video-text">Випуск ТСН.Ранок - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</div>
+                    <div class="e-content c-video-text">ТСН.Тиждень - це щотижневий огляд найголовніших подій у країні та світі.</div>
                 </div>
 
                 <div class="c-video-embed-col">
@@ -364,15 +364,15 @@ window.adTargeting = {
                 <a href="https://tsn.ua/online?day=9&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
                     <time datetime="2020-12-09">
                         <abbr title="Середа">Ср</abbr>
-                        <span class="c-nav__date">Вчора</span>
+                        <span class="c-nav__date">09.12</span>
                     </time>
                 </a>
             </li>
-                    <li  class="c-nav--current" >
+                    <li >
                 <a href="https://tsn.ua/online?day=10&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
                     <time datetime="2020-12-10">
                         <abbr title="Четвер">Чт</abbr>
-                        <span class="c-nav__date">Сьогодні</span>
+                        <span class="c-nav__date">10.12</span>
                     </time>
                 </a>
             </li>
@@ -380,15 +380,15 @@ window.adTargeting = {
                 <a href="https://tsn.ua/online?day=11&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
                     <time datetime="2020-12-11">
                         <abbr title="П&#039;ятниця">Пт</abbr>
-                        <span class="c-nav__date">11.12</span>
+                        <span class="c-nav__date">Вчора</span>
                     </time>
                 </a>
             </li>
-                    <li >
+                    <li  class="c-nav--current" >
                 <a href="https://tsn.ua/online?day=12&amp;month=12&amp;year=2020" class="c-nav__btn c-nav--logo-h">
                     <time datetime="2020-12-12">
                         <abbr title="Субота">Сб</abbr>
-                        <span class="c-nav__date">12.12</span>
+                        <span class="c-nav__date">Сьогодні</span>
                     </time>
                 </a>
             </li>
@@ -403,14 +403,14 @@ window.adTargeting = {
         
         <li class="u-ml--auto">
             <button type="button" id="clndrBtn3" class="c-nav__btn c-nav--logo-h js-switcher-btn" data-controls="clndrBox">
-                <time datetime="2020-12-10">
-                    <abbr title="Середа" class="c-nav__label i-reset--a i-calendar">Чт</abbr>
+                <time datetime="2020-12-12">
+                    <abbr title="Середа" class="c-nav__label i-reset--a i-calendar">Сб</abbr>
                     <span class="c-nav__date">Сьогодні</span>
                 </time>
             </button>
 
             <div id="clndrBox" class="c-nav__menu c-nav__menu--rtl u-pb--0" aria-labelledby="clndrBtn">
-                <div class="js-clndr" data-date="2020-12-10" data-month="12" data-year="2020" data-day="10" data-end-date="2020-12-20">
+                <div class="js-clndr" data-date="2020-12-12" data-month="12" data-year="2020" data-day="12" data-end-date="2020-12-27">
                     <script type="text/template" class="js-clndr-tpl">
                         <div class="clndr-controls">
                             <button class="clndr-previous-button clndr-btn" aria-label="Попередній місяць" data-switcher-skip="true"></button>
@@ -463,153 +463,6 @@ window.adTargeting = {
             <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
                 <div class="c-card__img-box">
                     <div class="c-card__img-back">
-                        <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.Ранок">
-                        </div>
-
-                                    </div>
-                <div class="c-card__head">
-                    <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-10-grudnya-2020-roku-1684921.html"  class="c-card__link">
-                            <time datetime="2020-12-10T07:00:00+02:00">07:00</time>
-                            ТСН.Ранок
-                        </a>
-                    </h3>
-                    <div class="c-card__lead">
-                        <p>Випуск ТСН.Ранок - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</p>
-                    </div>
-                </div>
-            </article>
-        </div>
-            <div class="l-spacer">
-            <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
-                <div class="c-card__img-box">
-                    <div class="c-card__img-back">
-                        <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.Ранок">
-                        </div>
-
-                                    </div>
-                <div class="c-card__head">
-                    <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-10-grudnya-2020-roku-1684921.html"  class="c-card__link">
-                            <time datetime="2020-12-10T08:00:00+02:00">08:00</time>
-                            ТСН.Ранок
-                        </a>
-                    </h3>
-                    <div class="c-card__lead">
-                        <p>Випуск ТСН.Ранок - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</p>
-                    </div>
-                </div>
-            </article>
-        </div>
-            <div class="l-spacer">
-            <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
-                <div class="c-card__img-box">
-                    <div class="c-card__img-back">
-                        <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.Ранок">
-                        </div>
-
-                                    </div>
-                <div class="c-card__head">
-                    <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_ranok/vipusk-tsn-ranok-za-10-grudnya-2020-roku-1684921.html"  class="c-card__link">
-                            <time datetime="2020-12-10T09:00:00+02:00">09:00</time>
-                            ТСН.Ранок
-                        </a>
-                    </h3>
-                    <div class="c-card__lead">
-                        <p>Випуск ТСН.Ранок - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</p>
-                    </div>
-                </div>
-            </article>
-        </div>
-            <div class="l-spacer">
-            <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
-                <div class="c-card__img-box">
-                    <div class="c-card__img-back">
-                        <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.12:00">
-                        </div>
-
-                                    </div>
-                <div class="c-card__head">
-                    <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_1200/vipusk-tsn-12-00-za-10-grudnya-2020-roku-1685164.html"  class="c-card__link">
-                            <time datetime="2020-12-10T12:00:00+02:00">12:00</time>
-                            ТСН.12:00
-                        </a>
-                    </h3>
-                    <div class="c-card__lead">
-                        <p>Випуск ТСН о 12:00 - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</p>
-                    </div>
-                </div>
-            </article>
-        </div>
-            <div class="l-spacer">
-            <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
-                <div class="c-card__img-box">
-                    <div class="c-card__img-back">
-                        <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.14:00">
-                        </div>
-
-                                    </div>
-                <div class="c-card__head">
-                    <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_1400/vipusk-tsn-14-00-za-10-grudnya-2020-roku-1685299.html"  class="c-card__link">
-                            <time datetime="2020-12-10T14:00:00+02:00">14:00</time>
-                            ТСН.14:00
-                        </a>
-                    </h3>
-                    <div class="c-card__lead">
-                        <p>Випуск ТСН о 14:00 - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</p>
-                    </div>
-                </div>
-            </article>
-        </div>
-            <div class="l-spacer">
-            <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
-                <div class="c-card__img-box">
-                    <div class="c-card__img-back">
-                        <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.16:45">
-                        </div>
-
-                                    </div>
-                <div class="c-card__head">
-                    <h3 class="c-card__title">
-                        <a  href="https://tsn.ua/vypusky/tsn_osoblyve/vipusk-tsn-16-45-za-10-grudnya-2020-roku-1685497.html"  class="c-card__link">
-                            <time datetime="2020-12-10T16:45:00+02:00">16:45</time>
-                            ТСН.16:45
-                        </a>
-                    </h3>
-                    <div class="c-card__lead">
-                        <p>Випуск ТСН о 16:45 - це актуальні та оперативні новини про події в Україні і світі. Вас чекають лише важливі та цікаві факти.</p>
-                    </div>
-                </div>
-            </article>
-        </div>
-            <div class="l-spacer">
-            <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
-                <div class="c-card__img-box">
-                    <div class="c-card__img-back">
-                        <img src="https://img.tsn.ua/cached/1598977526/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/ef/2a/80fd718f685908733009f4ce86392aef.png" width="470" height="180" class="c-card__img" alt="Спецкор">
-                        </div>
-
-                                    </div>
-                <div class="c-card__head">
-                    <h3 class="c-card__title">
-                        <a  class="c-card__link">
-                            <time datetime="2020-12-10T18:15:00+02:00">18:15</time>
-                            Спецкор
-                        </a>
-                    </h3>
-                    <div class="c-card__lead">
-                        <p>&quot;Спецкор&quot; - побачте на власні очі ситуацію з передової і першим дізнайтесь про те, що там відбувається. Репортажі з зони бойових дій на Сході, актуальні новини з місця подій.</p>
-                    </div>
-                </div>
-            </article>
-        </div>
-            <div class="l-spacer">
-            <article class="c-card c-card--img-xxs c-card--title-md c-card--bold c-card--log c-card--badge-text">
-                <div class="c-card__img-box">
-                    <div class="c-card__img-back">
                         <img src="https://img.tsn.ua/cached/1598855451/tsn-1bfeaf6125141ee06e055fc61b5a2fa6/thumbs/470x180/bd/b6/00b8b31eeb3d105a7a925d9a383ab6bd.png" width="470" height="180" class="c-card__img" alt="ТСН.19:30 жестовою мовою">
                         </div>
 
@@ -617,7 +470,7 @@ window.adTargeting = {
                 <div class="c-card__head">
                     <h3 class="c-card__title">
                         <a  class="c-card__link">
-                            <time datetime="2020-12-10T19:29:00+02:00">19:29</time>
+                            <time datetime="2020-12-12T19:29:00+02:00">19:29</time>
                             ТСН.19:30 жестовою мовою
                         </a>
                     </h3>
@@ -638,7 +491,7 @@ window.adTargeting = {
                 <div class="c-card__head">
                     <h3 class="c-card__title">
                         <a  class="c-card__link">
-                            <time datetime="2020-12-10T19:30:00+02:00">19:30</time>
+                            <time datetime="2020-12-12T19:30:00+02:00">19:30</time>
                             ТСН.19:30
                         </a>
                     </h3>

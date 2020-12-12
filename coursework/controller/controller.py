@@ -1,5 +1,5 @@
 from controller.controller_functions import update_info, insert_generating_data, delete_old_news, \
-    analize_views_per_hour, analize_views, analize_similar, get_all_news, get_news_link
+    analize_views_per_hour, analize_views, analize_similar, get_all_news, get_news_link, analize_authors
 from view.view import View
 import time
 
@@ -73,6 +73,9 @@ def menu():
             wait()
             continue
         if option is 7:
+            analize_authors()
+            wait()
+        if option is 8:
             news = get_all_news()
             for item in news:
                 View.print_all_news(item)
