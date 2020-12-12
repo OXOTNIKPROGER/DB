@@ -10,7 +10,7 @@ class View:
         return result
 
     @staticmethod
-    def print_news(news):
+    def print_all_news(news):
         print('///////////////////////////////')
         print('id новини -> {}'.format(news.news_id))
         print('Назва новини -> {}'.format(news.title))

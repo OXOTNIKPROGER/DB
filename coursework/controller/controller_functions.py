@@ -233,8 +233,7 @@ def get_duration_in_seconds(duration):
 def analize_views():
     df = create_News_arguments_table()
     selected_df = df[['views', 'thema']]
-    selected_df = selected_df.groupby('thema')['views'].median().reset_index().sort_values(by=['views'],
-                                                                                           ascending=False)
+    selected_df = selected_df.groupby('thema')['views'].median().reset_index().sort_values(by=['views'], ascending=False)
     plt.title('Медіана переглядів станом на {}'.format(datetime.now()), fontsize=PLOT_LABEL_FONT_SIZE)
     plt.bar(selected_df['thema'], selected_df['views'], color=getColors(len(selected_df['thema'])))
     plt.ylabel('медіанне значення переглядів', fontsize=PLOT_LABEL_FONT_SIZE)

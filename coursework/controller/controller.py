@@ -75,5 +75,5 @@ def menu():
         if option is 7:
             news = get_all_news()
             for item in news:
-                View.print_news(item)
+                View.print_all_news(item)
             wait()
