@@ -186,27 +186,30 @@ class request_result:
 
 
 def load_url(url, id):
-    ans = requests.get(url)
-    return request_result(ans.text, id)
+    try:
+        ans = requests.get(url , timeout = 5)
+        return request_result(ans.text, id)
+    except:
+        return request_result("" , 0)
 
 
 def update_info():
-    contents = dbModel.get_entities(Content)
-    amount = 0
-    for content in contents:
-        amount = amount + 1
-    with concurrent.futures.ThreadPoolExecutor(max_workers=amount) as executor:
-        future_to_url = (executor.submit(load_url, content.link, content.content_id) for content in contents)
-        for future in concurrent.futures.as_completed(future_to_url):
-            data = future.result()
-            soup = BeautifulSoup(data.text, 'lxml')
-            views = get_views(soup)
-            if views is None:
-                continue
-            stat = dbModel.get_entity(Statistics, data.id)
+        contents = dbModel.get_entities(Content)
+        amount = 0
+        for content in contents:
             amount = amount + 1
-            stat.views = views
-            dbModel.update_entity(stat)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=amount) as executor:
+            future_to_url = (executor.submit(load_url, content.link, content.content_id) for content in contents)
+            for future in concurrent.futures.as_completed(future_to_url):
+                data = future.result()
+                soup = BeautifulSoup(data.text, 'lxml')
+                views = get_views(soup)
+                if views is None:
+                    continue
+                stat = dbModel.get_entity(Statistics, data.id)
+                amount = amount + 1
+                stat.views = views
+                dbModel.update_entity(stat)
 
 
 def create_News_arguments_table():
@@ -283,15 +286,18 @@ def analize_similar(news_id):
         return -1
     list_of_tags = selected_df['tag']
     selected_df = selected_df[0:0]
+    current_tag_df_list = selected_df
     for tag in list_of_tags:
         current_tag_df = tags_df
         current_tag_df = current_tag_df.loc[(current_tag_df['tag'] == tag) & (current_tag_df['n_id'] != news_id)]
         current_tag_df = current_tag_df.sort_values(by='views', ascending=False).head(2)
-        if len(current_tag_df) != 0:
-            selected_df = selected_df.append(current_tag_df, ignore_index=True)
+        current_tag_df_list = current_tag_df_list.append(current_tag_df , ignore_index = True)
+    ids = pd.unique(current_tag_df_list['n_id'])
     result = []
-    for news_id in selected_df['n_id']:
-        result.append(dbModel.get_entity(News, news_id))
+    for id in ids:
+        selected_df = selected_df.append(current_tag_df_list.loc[(current_tag_df_list['n_id'] == id)].head(1))
+    for new_id in selected_df['n_id']:
+            result.append(dbModel.get_entity(News, new_id))
     return result
 
 

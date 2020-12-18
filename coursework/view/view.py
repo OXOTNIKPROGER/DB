@@ -62,7 +62,7 @@ class View:
 
     @staticmethod
     def print_after_delete():
-        print('Новини ваидалені')
+        print('Новини видалені')
 
     @staticmethod
     def print_on_update():
